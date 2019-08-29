@@ -1,0 +1,77 @@
+{
+	"name": "probe-rs-vscode",
+	"displayName": "probe_rs_vscode",
+	"description": "VS Code for probe.rs",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Debuggers"
+	],
+	"contributes": {
+		"breakpoints": [
+			{
+				"language": "rust"
+			}
+		],
+		"debuggers": [
+			{
+				"type": "probe_rs",
+				"label": "Probe-RS",
+				"program": "./bin/probe-rs-debugadapter",
+				"languages": [
+					"rust"
+				],
+				"configurationAttributes": {
+					"launch": {
+						"required": [
+							"program"
+						],
+						"properties": {
+							"program": {
+								"type": "string",
+								"description": "Path to program to debug",
+								"default": "blubb"
+							}
+						}
+					}
+				},
+				"initialConfigurations": [
+					{
+						"type": "probe_rs",
+						"request": "launch",
+						"name": "Ask for file name",
+						"program": "blubb"
+					}
+				],
+				"configurationSnippets": [
+					{
+						"label": "Probe-RS: Launch",
+						"description": "A new configuration for 'debugging' a user selected markdown file.",
+						"body": {
+							"type": "probe_rs",
+							"request": "launch",
+							"name": "Ask for file name",
+							"program": "blubb"
+						}
+					}
+				]
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
