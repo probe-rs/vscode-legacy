@@ -9,3 +9,5 @@ edition = "2018"
 [dependencies]
 debugserver-types = "0.5.0"
 serde_json = "*"
+log = "*"
+simplelog = "0.7.1"
