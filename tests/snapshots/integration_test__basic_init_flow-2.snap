@@ -1,0 +1,5 @@
+---
+source: tests/integration_test.rs
+expression: response
+---
+{"body":{"additionalModuleColumns":null,"exceptionBreakpointFilters":null,"supportTerminateDebuggee":null,"supportedChecksumAlgorithms":null,"supportsCompletionsRequest":null,"supportsConditionalBreakpoints":null,"supportsConfigurationDoneRequest":null,"supportsDataBreakpoints":null,"supportsDelayedStackTraceLoading":null,"supportsEvaluateForHovers":null,"supportsExceptionInfoRequest":null,"supportsExceptionOptions":null,"supportsFunctionBreakpoints":null,"supportsGotoTargetsRequest":null,"supportsHitConditionalBreakpoints":null,"supportsLoadedSourcesRequest":null,"supportsLogPoints":null,"supportsModulesRequest":null,"supportsRestartFrame":null,"supportsRestartRequest":null,"supportsSetExpression":null,"supportsSetVariable":null,"supportsStepBack":null,"supportsStepInTargetsRequest":null,"supportsTerminateRequest":null,"supportsTerminateThreadsRequest":null,"supportsValueFormattingOptions":null},"command":"initialize","message":null,"request_seq":1,"seq":2,"success":true,"type":"response"}
