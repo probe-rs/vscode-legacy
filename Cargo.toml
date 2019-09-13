@@ -7,11 +7,25 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+memmap = "*"
 debugserver-types = "0.5.0"
 serde_json = "*"
 serde = { version = "1.0", features = ["derive"] }
 log = "*"
 simplelog = "0.7.1"
+
+memory = { git = "https://github.com/probe-rs/probe-rs", branch="m0-debug" }
+probe = { git = "https://github.com/probe-rs/probe-rs", branch = "m0-debug" }
+daplink = { git = "https://github.com/probe-rs/probe-rs", branch="m0-debug" }
+coresight  = { git = "https://github.com/probe-rs/probe-rs", branch="m0-debug" }
+probe-rs-debug  = { git = "https://github.com/probe-rs/probe-rs", branch="m0-debug" }
+
+[patch."https://github.com/probe-rs/probe-rs"]
+memory = { path = "../probe-rs/memory" }
+probe = { path = "../probe-rs/probe" }
+daplink = { path = "../probe-rs/probe/daplink" }
+coresight  = { path = "../probe-rs/coresight" }
+probe-rs-debug  = { path = "../probe-rs/debug" }
 
 [dev-dependencies]
 assert_cmd = "0.10"

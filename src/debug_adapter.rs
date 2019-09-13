@@ -1,3 +1,4 @@
+use debugserver_types::StoppedEvent;
 use debugserver_types::ThreadEvent;
 use debugserver_types::ThreadEventBody;
 use debugserver_types::ProcessEvent;
@@ -14,6 +15,25 @@ use debugserver_types::{
     InitializedEvent,
     StoppedEventBody
 };
+
+#[derive(Debug)]
+pub enum Error {
+    IoError(io::Error),
+    SerdeError(serde_json::Error),
+    Unimplemented,
+}
+
+impl From<io::Error> for Error {
+    fn from(e: io::Error) -> Self {
+        Error::IoError(e)
+    }
+}
+
+impl From<serde_json::Error> for Error {
+    fn from(e: serde_json::Error) -> Self {
+        Error::SerdeError(e)
+    }
+}
 
 pub struct DebugAdapter<R: Read, W: Write> {
     seq: i64,
@@ -34,7 +54,7 @@ impl<R: Read, W: Write> DebugAdapter<R,W> {
         self.seq
     }
 
-    pub fn receive_data(&mut self) -> Result<Vec<u8>, io::Error> {
+    pub fn receive_data(&mut self) -> Result<Vec<u8>, Error> {
         let mut header = String::new();
 
         self.input.read_line(&mut header)?;
@@ -55,7 +75,7 @@ impl<R: Read, W: Write> DebugAdapter<R,W> {
 
     }
 
-    pub fn send_data(&mut self, raw_data: &[u8]) -> Result<(), io::Error> {
+    pub fn send_data(&mut self, raw_data: &[u8]) -> Result<(), Error> {
         let response_body = raw_data;
 
         let response_header = format!("Content-Length: {}\r\n\r\n", response_body.len());
@@ -73,8 +93,8 @@ impl<R: Read, W: Write> DebugAdapter<R,W> {
         Ok(())
     }
 
-    pub fn send_event(&mut self, event: &Event) -> Result<(), io::Error> {
-        let body = event.serialize(self.seq).unwrap();
+    pub fn send_event(&mut self, event: &Event) -> Result<(), Error> {
+        let body = event.serialize(self.seq)?;
 
         self.send_data(&body)
     }
@@ -107,30 +127,38 @@ pub enum Event {
 }
 
 impl Event {
-    fn serialize(&self, seq: i64) -> serde_json::Result<Vec<u8>> {
+    fn serialize(&self, seq: i64) -> Result<Vec<u8>, Error> {
         use Event::*;
 
-        match self {
+        let data = match self {
             Initialized => serde_json::to_vec(&InitializedEvent {
                 seq,
                 body: None,
                 type_: "event".to_owned(),
                 event: "initialized".to_owned(),
-            }),
+            })?,
             Process(ref body) => serde_json::to_vec(&ProcessEvent{
                 seq,
                 body: body.clone(),
                 type_: "event".to_owned(),
                 event: "process".to_owned(),
-            }),
+            })?,
             Thread(ref body) => serde_json::to_vec(&ThreadEvent{
                 seq,
                 body: body.clone(),
                 type_: "event".to_owned(),
                 event: "thread".to_owned(),
-            }),
-            _ => unimplemented!()
-        }
+            })?,
+            Stopped(ref body) => serde_json::to_vec(&StoppedEvent{
+                seq,
+                body: body.clone(),
+                type_: "event".to_owned(),
+                event: "stopped".to_owned(),
+            })?,
+            _ => return Err(Error::Unimplemented),
+        };
+
+        Ok(data)
     }
 }
 
