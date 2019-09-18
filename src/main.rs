@@ -1,33 +1,8 @@
 mod debug_adapter;
 
-use debugserver_types::ScopesResponseBody;
-use debugserver_types::ScopesResponse;
-use debugserver_types::ScopesArguments;
-use debugserver_types::Source;
-use debugserver_types::StackFrame;
-use debugserver_types::StackTraceResponseBody;
-use debugserver_types::StackTraceResponse;
-use debugserver_types::StackTraceArguments;
-use debugserver_types::StoppedEventBody;
 use probe::debug_probe::DebugProbe;
 use probe::debug_probe::DebugProbeError;
-use debugserver_types::PauseResponse;
-use debugserver_types::PauseArguments;
-use debugserver_types::ThreadsResponseBody;
-use debugserver_types::ThreadsResponse;
-use debugserver_types::Thread;
-use debugserver_types::ConfigurationDoneResponse;
-use debugserver_types::ConfigurationDoneArguments;
-use debugserver_types::SetExceptionBreakpointsResponse;
-use debugserver_types::SetExceptionBreakpointsArguments;
-use debugserver_types::Breakpoint;
-use debugserver_types::SetBreakpointsResponseBody;
-use debugserver_types::SetBreakpointsResponse;
-use debugserver_types::SetBreakpointsArguments;
-use debugserver_types::ProcessEventBody;
-use debugserver_types::AttachResponse;
-use debugserver_types::DisconnectArguments;
-use debugserver_types::LaunchRequestArguments;
+use debugserver_types::*;
 use debug_adapter::{DebugAdapter, Event};
 
 use daplink;
@@ -481,6 +456,68 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
+            },
+            "continue" => {
+                let args: ContinueArguments = serde_json::from_value(req.arguments.as_ref().unwrap().clone()).unwrap();
+                debug!("Arguments: {:?}", args);
+
+                if let Some(ref mut session) = self.session {
+                    session.target.run(&mut session.probe).expect("Failed to continue running target.");
+                }
+
+                let resp = ContinueResponse {
+                    command: "continue".to_owned(),
+                    request_seq: req.seq,
+                    seq: adapter.peek_seq(),
+                    success: true,
+                    body: ContinueResponseBody {
+                        all_threads_continued: Some(true),
+                    },
+                    type_: "response".to_owned(),
+                    message: None,
+                };
+
+                let encoded_resp = serde_json::to_vec(&resp)?;
+
+                adapter.send_data(&encoded_resp)?;
+            },
+            "next" => {
+                let args: NextArguments = serde_json::from_value(req.arguments.as_ref().unwrap().clone()).unwrap();
+                debug!("Arguments: {:?}", args);
+
+                let resp = NextResponse {
+                    command: "next".to_owned(),
+                    request_seq: req.seq,
+                    seq: adapter.peek_seq(),
+                    success: true,
+                    body: None,
+                    type_: "response".to_owned(),
+                    message: None,
+                };
+
+                let encoded_resp = serde_json::to_vec(&resp)?;
+
+                adapter.send_data(&encoded_resp)?;
+
+                if let Some(ref mut session) = self.session {
+                    let _cpu_info = session.target.step(&mut session.probe).expect("Failed to continue running target.");
+
+                    debug!("Stopped, sending pause event");
+
+                    let event_body = StoppedEventBody {
+                        reason: "step".to_owned(),
+                        description: Some("Target paused after step.".to_owned()),
+                        thread_id: Some(0),
+                        preserve_focus_hint: None,
+                        text: None,
+                        all_threads_stopped: None,
+                    };
+                    adapter.send_event(&Event::Stopped(event_body))?;
+
+                    debug!("Sended pause event");
+
+                }
+
             },
             _ => unimplemented!(),
         }
