@@ -1,15 +1,19 @@
-name: Rust
+name: Rust Build
 
 on: [push]
 
 jobs:
   build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
     - name: Install libusb
       run: sudo apt install -y libusb-dev libusb-1.0
+      if: matrix.os == 'ubuntu-latest'
     - uses: actions/checkout@v1
     - name: Build
       run: cargo build --verbose
