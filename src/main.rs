@@ -457,6 +457,59 @@ impl Debugger {
 
                 adapter.send_data(&encoded_resp)?;
             },
+            "variables" => {
+                let args: VariablesArguments = serde_json::from_value(req.arguments.as_ref().unwrap().clone()).unwrap();
+                debug!("Arguments: {:?}", args);
+
+                let session = self.session.as_mut().unwrap();
+
+                use probe::target::m0::PC;
+
+                let pc = session.target.read_core_reg(&mut session.probe, PC).unwrap();
+                debug!("Stopped at address 0x{:08x}", pc);
+
+                let debug_info = self.debug_info.as_ref().unwrap();
+
+
+                let mut frames = debug_info.try_unwind(session, pc as u64);
+
+                debug!("Got stacktraces...");
+
+
+                let variables: Vec<Variable> = frames
+                    .next()
+                    .unwrap()
+                    .variables
+                    .iter()
+                    .map(|variable| {
+                    Variable {
+                        name: variable.name.clone(),
+                        value: variable.value.to_string(),
+                        type_: None,
+                        presentation_hint: None,
+                        evaluate_name: None,
+                        variables_reference: -1,
+                        named_variables: None,
+                        indexed_variables: None,
+                    }
+                }).collect();
+
+                let resp = VariablesResponse {
+                    command: "variables".to_owned(),
+                    request_seq: req.seq,
+                    seq: adapter.peek_seq(),
+                    success: true,
+                    body: VariablesResponseBody {
+                        variables,
+                    },
+                    type_: "response".to_owned(),
+                    message: None,
+                };
+
+                let encoded_resp = serde_json::to_vec(&resp)?;
+
+                adapter.send_data(&encoded_resp)?;
+            },
             "continue" => {
                 let args: ContinueArguments = serde_json::from_value(req.arguments.as_ref().unwrap().clone()).unwrap();
                 debug!("Arguments: {:?}", args);
