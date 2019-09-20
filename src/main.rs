@@ -121,6 +121,7 @@ struct Debugger {
     program: Option<PathBuf>,
     session: Option<Session>,
     debug_info: Option<DebugInfo>,
+    current_stackframes: Vec<probe_rs_debug::debug::StackFrame>,
 }
 
 impl Debugger {
@@ -369,12 +370,11 @@ impl Debugger {
                 let debug_info = self.debug_info.as_ref().unwrap();
 
 
-                let frames = debug_info.try_unwind(session, pc as u64);
+                self.current_stackframes = debug_info.try_unwind(session, pc as u64).collect();
 
                 debug!("Got stacktraces...");
 
-
-                let frame_list: Vec<StackFrame> = frames.map(|f| {
+                let frame_list: Vec<StackFrame> = self.current_stackframes.iter().map(|f| {
 
                     use probe_rs_debug::debug::ColumnType::*;
 
@@ -405,9 +405,9 @@ impl Debugger {
 
                     StackFrame {
                         id: f.id as i64,
-                        name: f.function_name,
+                        name: f.function_name.clone(),
                         source: source,
-                        line: f.source_location.and_then( |sl| sl.line ).unwrap_or(0) as i64,
+                        line: f.source_location.as_ref().and_then( |sl| sl.line ).unwrap_or(0) as i64,
                         column: column as i64,
                         end_column: None,
                         end_line: None,
@@ -441,13 +441,53 @@ impl Debugger {
                 let args: ScopesArguments = serde_json::from_value(req.arguments.as_ref().unwrap().clone()).unwrap();
                 debug!("Arguments: {:?}", args);
 
+                let mut scopes = vec![];
+
+                if let Some(frame) = self.current_stackframes.iter().find(|sf| sf.id == args.frame_id as u64) {
+                    use probe_rs_debug::debug::ColumnType::*;
+
+                    let sl = frame.source_location.as_ref().unwrap();
+                    let mut path: PathBuf = sl.directory.as_ref().unwrap().into();
+
+                    let source = Some(
+                        Source{
+                            name: Some(sl.file.clone().unwrap()),
+                            path: path.to_str().map(|s| s.to_owned()),
+                            source_reference: None,
+                            presentation_hint: None,
+                            origin: None,
+                            sources: None,
+                            adapter_data: None,
+                            checksums: None,
+                        }
+                    );
+
+                    let scope = Scope {
+                        line: frame.source_location.as_ref().and_then(|l| l.line.map(|l| l as i64)),
+                        column: frame.source_location.as_ref().and_then(|l| l.column.map(|c| match c {
+                            LeftEdge => 0,
+                            Column(c) => c as i64,
+                        })),
+                        end_column: None,
+                        end_line: None,
+                        expensive: false,
+                        indexed_variables: None,
+                        name: "Locals".to_string(),
+                        named_variables: None,
+                        source: source,
+                        variables_reference: frame.id as i64,
+                    };
+
+                    scopes.push(scope);
+                }
+
                 let resp = ScopesResponse {
                     command: "scopes".to_owned(),
                     request_seq: req.seq,
                     seq: adapter.peek_seq(),
                     success: true,
                     body: ScopesResponseBody {
-                        scopes: Vec::new(),
+                        scopes,
                     },
                     type_: "response".to_owned(),
                     message: None,
@@ -461,38 +501,26 @@ impl Debugger {
                 let args: VariablesArguments = serde_json::from_value(req.arguments.as_ref().unwrap().clone()).unwrap();
                 debug!("Arguments: {:?}", args);
 
-                let session = self.session.as_mut().unwrap();
+                let mut variables = vec![];
 
-                use probe::target::m0::PC;
-
-                let pc = session.target.read_core_reg(&mut session.probe, PC).unwrap();
-                debug!("Stopped at address 0x{:08x}", pc);
-
-                let debug_info = self.debug_info.as_ref().unwrap();
-
-
-                let mut frames = debug_info.try_unwind(session, pc as u64);
-
-                debug!("Got stacktraces...");
-
-
-                let variables: Vec<Variable> = frames
-                    .next()
-                    .unwrap()
-                    .variables
-                    .iter()
-                    .map(|variable| {
-                    Variable {
-                        name: variable.name.clone(),
-                        value: variable.value.to_string(),
-                        type_: None,
-                        presentation_hint: None,
-                        evaluate_name: None,
-                        variables_reference: -1,
-                        named_variables: None,
-                        indexed_variables: None,
-                    }
-                }).collect();
+                if let Some(frame) = self.current_stackframes.iter().find(|sf| sf.id == args.variables_reference as u64) {
+                    variables = frame
+                        .variables
+                        .iter()
+                        .map(|variable| {
+                        Variable {
+                            name: variable.name.clone(),
+                            value: variable.value.to_string(),
+                            type_: None,
+                            presentation_hint: None,
+                            evaluate_name: None,
+                            variables_reference: args.variables_reference,
+                            named_variables: None,
+                            indexed_variables: None,
+                        }
+                    }).collect();
+                    debug!("{:?}", &variables);
+                }
 
                 let resp = VariablesResponse {
                     command: "variables".to_owned(),
