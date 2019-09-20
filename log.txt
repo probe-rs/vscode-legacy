@@ -1,0 +1,1487 @@
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: Debugger started in directory /home/yatekii/repos/probe-rs/vscode
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: Arguments: /home/yatekii/repos/probe-rs/vscode/target/debug/probe-rs-debugadapter
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 315
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: < InitializeRequest { arguments: InitializeRequestArguments { adapter_id: "probe_rs", client_id: Some("vscode"), client_name: Some("Visual Studio Code"), columns_start_at_1: Some(true), lines_start_at_1: Some(true), locale: Some("en-us"), path_format: Some("path"), supports_run_in_terminal_request: Some(true), supports_variable_paging: Some(true), supports_variable_type: Some(true) }, command: "initialize", seq: 1, type_: "request" }
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 1005
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":{"additionalModuleColumns":null,"exceptionBreakpointFilters":null,"supportTerminateDebuggee":null,"supportedChecksumAlgorithms":null,"supportsCompletionsRequest":null,"supportsConditionalBreakpoints":null,"supportsConfigurationDoneRequest":true,"supportsDataBreakpoints":null,"supportsDelayedStackTraceLoading":null,"supportsEvaluateForHovers":null,"supportsExceptionInfoRequest":null,"supportsExceptionOptions":null,"supportsFunctionBreakpoints":null,"supportsGotoTargetsRequest":null,"supportsHitConditionalBreakpoints":null,"supportsLoadedSourcesRequest":null,"supportsLogPoints":null,"supportsModulesRequest":null,"supportsRestartFrame":null,"supportsRestartRequest":null,"supportsSetExpression":null,"supportsSetVariable":null,"supportsStepBack":null,"supportsStepInTargetsRequest":null,"supportsTerminateRequest":null,"supportsTerminateThreadsRequest":null,"supportsValueFormattingOptions":null},"command":"initialize","message":null,"request_seq":1,"seq":2,"success":true,"type":"response"}
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 58
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":null,"event":"initialized","seq":2,"type":"event"}
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 89
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 115, 101, 116, 69, 120, 99, 101, 112, 116, 105, 111, 110, 66, 114, 101, 97, 107, 112, 111, 105, 110, 116, 115, 34, 44, 34, 97, 114, 103, 117, 109, 101, 110, 116, 115, 34, 58, 123, 34, 102, 105, 108, 116, 101, 114, 115, 34, 58, 91, 93, 125, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 50, 125]
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: Some(Object({"filters": Array([])})), command: "setExceptionBreakpoints", seq: 2, type_: "request" }
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: Handling request setExceptionBreakpoints
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: Arguments: SetExceptionBreakpointsArguments { exception_options: None, filters: [] }
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 121
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":null,"command":"setExceptionBreakpoints","message":null,"request_seq":2,"seq":3,"success":true,"type":"response"}
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 245
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 97, 116, 116, 97, 99, 104, 34, 44, 34, 97, 114, 103, 117, 109, 101, 110, 116, 115, 34, 58, 123, 34, 116, 121, 112, 101, 34, 58, 34, 112, 114, 111, 98, 101, 95, 114, 115, 34, 44, 34, 114, 101, 113, 117, 101, 115, 116, 34, 58, 34, 97, 116, 116, 97, 99, 104, 34, 44, 34, 110, 97, 109, 101, 34, 58, 34, 112, 114, 111, 98, 101, 45, 114, 115, 32, 84, 101, 115, 116, 34, 44, 34, 112, 114, 111, 103, 114, 97, 109, 34, 58, 34, 47, 104, 111, 109, 101, 47, 121, 97, 116, 101, 107, 105, 105, 47, 114, 101, 112, 111, 115, 47, 112, 114, 111, 98, 101, 45, 114, 115, 47, 112, 114, 111, 98, 101, 45, 114, 115, 47, 115, 97, 109, 112, 108, 101, 47, 103, 112, 105, 111, 95, 104, 97, 108, 95, 98, 108, 105, 110, 107, 121, 34, 44, 34, 95, 95, 115, 101, 115, 115, 105, 111, 110, 73, 100, 34, 58, 34, 99, 55, 102, 53, 52, 50, 99, 53, 45, 57, 53, 54, 98, 45, 52, 97, 101, 52, 45, 98, 51, 54, 53, 45, 54, 50, 49, 50, 51, 53, 99, 97, 101, 102, 99, 57, 34, 125, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 51, 125]
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: Some(Object({"__sessionId": String("c7f542c5-956b-4ae4-b365-621235caefc9"), "name": String("probe-rs Test"), "program": String("/home/yatekii/repos/probe-rs/probe-rs/sample/gpio_hal_blinky"), "request": String("attach"), "type": String("probe_rs")})), command: "attach", seq: 3, type_: "request" }
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: Handling request attach
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: Arguments: AttachRequestArguments { program: "/home/yatekii/repos/probe-rs/probe-rs/sample/gpio_hal_blinky" }
+19:27:27 [ INFO] Attaching to target system
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 11, 40, 42, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [11, 00, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 02, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [02, 01, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 11, 40, 42, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [11, 00, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 04, 00, 50, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [04, 00, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 13, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [13, 00, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 12, 38, FF, FF, FF, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [12, 00, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 12, 10, 9E, E7, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [12, 00, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 12, 38, FF, FF, FF, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [12, 00, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 12, 08, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [12, 00, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::daplink: Reading DP register DPIDR
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 02, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 77, 14, B1, 0B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::daplink: Read    DP register DPIDR, value=0x0bb11477
+19:27:27 [ INFO] Debug Port Version:  DPv1
+19:27:27 [ INFO] Debug Port Designer: ARM Ltd
+19:27:27 [DEBUG] (1) daplink::daplink: Writing DP register ABORT, value=0x0000003c
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 00, 3C, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 77, 14, B1, 0B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::daplink: Writing DP register SELECT, value=0x00000000
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 08, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 77, 14, B1, 0B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::daplink: Requesting debug power
+19:27:27 [DEBUG] (1) daplink::daplink: Writing DP register CTRL/STAT, value=0x50000000
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 04, 00, 00, 00, 50, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 77, 14, B1, 0B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::daplink: Reading DP register CTRL/STAT
+19:27:27 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 06, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 40, 00, 00, F0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:27 [DEBUG] (1) daplink::daplink: Read    DP register CTRL/STAT, value=0xf0000040
+19:27:27 [ INFO] Succesfully attached to system and entered debug mode
+19:27:27 [ INFO] Attached to probe
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 104
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":null,"command":"attach","message":null,"request_seq":3,"seq":4,"success":true,"type":"response"}
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 56
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 99, 111, 110, 102, 105, 103, 117, 114, 97, 116, 105, 111, 110, 68, 111, 110, 101, 34, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 52, 125]
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: None, command: "configurationDone", seq: 4, type_: "request" }
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: Handling request configurationDone
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 115
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":null,"command":"configurationDone","message":null,"request_seq":4,"seq":5,"success":true,"type":"response"}
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 46
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 116, 104, 114, 101, 97, 100, 115, 34, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 53, 125]
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: None, command: "threads", seq: 5, type_: "request" }
+19:27:27 [DEBUG] (1) probe_rs_debugadapter: Handling request threads
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 144
+19:27:27 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":{"threads":[{"id":0,"name":"Main Thread"}]},"command":"threads","message":null,"request_seq":5,"seq":6,"success":true,"type":"response"}
+19:27:30 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 71
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 112, 97, 117, 115, 101, 34, 44, 34, 97, 114, 103, 117, 109, 101, 110, 116, 115, 34, 58, 123, 34, 116, 104, 114, 101, 97, 100, 73, 100, 34, 58, 48, 125, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 54, 125]
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: Some(Object({"threadId": Number(0)})), command: "pause", seq: 6, type_: "request" }
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: Handling request pause
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: Arguments: PauseArguments { thread_id: 0 }
+19:27:30 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 100
+19:27:30 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":null,"command":"pause","message":null,"request_seq":6,"seq":7,"success":true,"type":"event"}
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: Trying to pause target
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 40, 00, 00, F0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 40, 00, 00, F0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0xA05F0003
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 03, 00, 5F, A0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 40, 00, 00, F0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 40, 00, 00, F0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 40, 00, 00, F0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000F
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 40, 00, 00, F0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 40, 00, 00, F0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 40, 00, 00, F0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00002238
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: Paused target at pc=0x00002238
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: Stopped, sending pause event
+19:27:30 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 195
+19:27:30 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":{"allThreadsStopped":null,"description":"Target paused due to pause request.","preserveFocusHint":null,"reason":"pause","text":null,"threadId":0},"event":"stopped","seq":8,"type":"event"}
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: Sended pause event
+19:27:30 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 46
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 116, 104, 114, 101, 97, 100, 115, 34, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 55, 125]
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: None, command: "threads", seq: 7, type_: "request" }
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: Handling request threads
+19:27:30 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 144
+19:27:30 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":{"threads":[{"id":0,"name":"Main Thread"}]},"command":"threads","message":null,"request_seq":7,"seq":9,"success":true,"type":"response"}
+19:27:30 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 103
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 115, 116, 97, 99, 107, 84, 114, 97, 99, 101, 34, 44, 34, 97, 114, 103, 117, 109, 101, 110, 116, 115, 34, 58, 123, 34, 116, 104, 114, 101, 97, 100, 73, 100, 34, 58, 48, 44, 34, 115, 116, 97, 114, 116, 70, 114, 97, 109, 101, 34, 58, 48, 44, 34, 108, 101, 118, 101, 108, 115, 34, 58, 50, 48, 125, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 56, 125]
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: Some(Object({"levels": Number(20), "startFrame": Number(0), "threadId": Number(0)})), command: "stackTrace", seq: 8, type_: "request" }
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: Handling request stackTrace
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: Arguments: StackTraceArguments { format: None, levels: Some(20), start_frame: Some(0), thread_id: 0 }
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000F
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00002238
+19:27:30 [DEBUG] (1) probe_rs_debugadapter: Stopped at address 0x00002238
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000000
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x40008000
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000001
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x20003ff8
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000002
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 02, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x40008000
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000003
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x20003ff8
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000004
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 04, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00f42400
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000005
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 05, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x20003ff8
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000006
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 06, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000007
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 07, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000008
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 08, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000009
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000A
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0A, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000B
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000C
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0C, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000D
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0D, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x20003ed0
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000E
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0E, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00002233
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000F
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00002238
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003EE0
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, E0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003EE4
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, E4, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 01, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00001401
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 01, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F10
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 10, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 01, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F14
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 14, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, C7, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x000014c7
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, C7, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F30
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 30, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, C7, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F34
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 34, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:30 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:30 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D9, 1A, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00001ad9
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D9, 1A, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F78
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 78, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D9, 1A, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F7C
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 7C, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F80
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 80, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F84
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 84, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 21, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00001b21
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 21, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FA8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, A8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 21, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FAC
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, AC, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 51, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00001b51
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 51, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FC8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, C8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 51, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FCC
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, CC, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 87, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00001b87
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 87, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FE0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, E0, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 87, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FE4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, E4, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x0000097b
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: Got stacktraces...
+19:27:31 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 3107
+19:27:31 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":{"stackFrames":[{"column":5,"endColumn":null,"endLine":null,"id":0,"line":435,"moduleId":null,"name":"deref","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"lib.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-0.6.0/src/lib.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":25,"endColumn":null,"endLine":null,"id":1,"line":344,"moduleId":null,"name":"read_compare_event<nrf51::TIMER0,u32>","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"hi_res_timer.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/hi_res_timer.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":20,"endColumn":null,"endLine":null,"id":2,"line":360,"moduleId":null,"name":"poll_compare_event<nrf51::TIMER0,u32>","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"hi_res_timer.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/hi_res_timer.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":15,"endColumn":null,"endLine":null,"id":3,"line":62,"moduleId":null,"name":"delay<nrf51::TIMER0>","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"delay.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/delay.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":8,"endColumn":null,"endLine":null,"id":4,"line":68,"moduleId":null,"name":"delay_ms<nrf51::TIMER0>","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"delay.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/delay.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":8,"endColumn":null,"endLine":null,"id":5,"line":74,"moduleId":null,"name":"delay_ms<nrf51::TIMER0>","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"delay.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/delay.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":38,"endColumn":null,"endLine":null,"id":6,"line":232,"moduleId":null,"name":"delay_ms","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"delay.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/delay.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":12,"endColumn":null,"endLine":null,"id":7,"line":23,"moduleId":null,"name":"s8704u19vnt1ov9u","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"gpio_hal_blinky.rs","origin":null,"path":"examples/gpio_hal_blinky.rs","presentationHint":null,"sourceReference":null,"sources":null}}],"totalFrames":8},"command":"stackTrace","message":null,"request_seq":8,"seq":10,"success":true,"type":"response"}
+19:27:31 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 103
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 115, 116, 97, 99, 107, 84, 114, 97, 99, 101, 34, 44, 34, 97, 114, 103, 117, 109, 101, 110, 116, 115, 34, 58, 123, 34, 116, 104, 114, 101, 97, 100, 73, 100, 34, 58, 48, 44, 34, 115, 116, 97, 114, 116, 70, 114, 97, 109, 101, 34, 58, 48, 44, 34, 108, 101, 118, 101, 108, 115, 34, 58, 50, 48, 125, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 57, 125]
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: Some(Object({"levels": Number(20), "startFrame": Number(0), "threadId": Number(0)})), command: "stackTrace", seq: 9, type_: "request" }
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: Handling request stackTrace
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: Arguments: StackTraceArguments { format: None, levels: Some(20), start_frame: Some(0), thread_id: 0 }
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000F
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00002238
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: Stopped at address 0x00002238
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000000
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x40008000
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000001
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x20003ff8
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000002
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 02, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x40008000
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000003
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 80, 00, 40, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x20003ff8
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000004
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 04, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00f42400
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000005
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 05, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 00, 24, F4, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x20003ff8
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000006
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 06, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, F8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000007
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 07, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000008
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 08, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x00000009
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000A
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0A, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000B
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000C
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0C, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000D
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0D, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x20003ed0
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000E
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0E, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00002233
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F4, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register DRW, value=0x0000000F
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0D, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F0, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 33, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00030003
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0xE000EDF8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, F8, ED, 00, E0, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 03, 00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00002238
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003EE0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, E0, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 38, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003EE4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, E4, 3E, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 01, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00001401
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 01, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F10
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 10, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 01, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F14
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 14, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, C7, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x000014c7
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, C7, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F30
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 30, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, C7, 14, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F34
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 34, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D9, 1A, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00001ad9
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D9, 1A, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F78
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 78, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, D9, 1A, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F7C
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 7C, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F80
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 80, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003F84
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, 84, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 21, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00001b21
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 21, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FA8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, A8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 21, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FAC
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, AC, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 51, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00001b51
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 51, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FC8
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, C8, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 51, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FCC
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, CC, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 87, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x00001b87
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 87, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FE0
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, E0, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 87, 1B, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0xffffffff
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register CSW, value=0x00000012
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Writing register TAR, value=0x20003FE4
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 05, E4, 3F, 00, 20, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, FF, FF, FF, FF, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Reading register DRW
+19:27:31 [DEBUG] (1) daplink::commands: Send buffer: [00, 05, 00, 01, 0F, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) daplink::commands: Receive buffer: [05, 01, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:31 [DEBUG] (1) probe::debug_probe: Read register    DRW, value=0x0000097b
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: Got stacktraces...
+19:27:31 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 3107
+19:27:31 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":{"stackFrames":[{"column":5,"endColumn":null,"endLine":null,"id":0,"line":435,"moduleId":null,"name":"deref","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"lib.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-0.6.0/src/lib.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":25,"endColumn":null,"endLine":null,"id":1,"line":344,"moduleId":null,"name":"read_compare_event<nrf51::TIMER0,u32>","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"hi_res_timer.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/hi_res_timer.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":20,"endColumn":null,"endLine":null,"id":2,"line":360,"moduleId":null,"name":"poll_compare_event<nrf51::TIMER0,u32>","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"hi_res_timer.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/hi_res_timer.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":15,"endColumn":null,"endLine":null,"id":3,"line":62,"moduleId":null,"name":"delay<nrf51::TIMER0>","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"delay.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/delay.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":8,"endColumn":null,"endLine":null,"id":4,"line":68,"moduleId":null,"name":"delay_ms<nrf51::TIMER0>","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"delay.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/delay.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":8,"endColumn":null,"endLine":null,"id":5,"line":74,"moduleId":null,"name":"delay_ms<nrf51::TIMER0>","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"delay.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/delay.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":38,"endColumn":null,"endLine":null,"id":6,"line":232,"moduleId":null,"name":"delay_ms","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"delay.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src/delay.rs","presentationHint":null,"sourceReference":null,"sources":null}},{"column":12,"endColumn":null,"endLine":null,"id":7,"line":23,"moduleId":null,"name":"s8704u19vnt1ov9u","presentationHint":null,"source":{"adapterData":null,"checksums":null,"name":"gpio_hal_blinky.rs","origin":null,"path":"examples/gpio_hal_blinky.rs","presentationHint":null,"sourceReference":null,"sources":null}}],"totalFrames":8},"command":"stackTrace","message":null,"request_seq":9,"seq":11,"success":true,"type":"response"}
+19:27:31 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 72
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 115, 99, 111, 112, 101, 115, 34, 44, 34, 97, 114, 103, 117, 109, 101, 110, 116, 115, 34, 58, 123, 34, 102, 114, 97, 109, 101, 73, 100, 34, 58, 48, 125, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 49, 48, 125]
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: Some(Object({"frameId": Number(0)})), command: "scopes", seq: 10, type_: "request" }
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: Handling request scopes
+19:27:31 [DEBUG] (1) probe_rs_debugadapter: Arguments: ScopesArguments { frame_id: 0 }
+19:27:31 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 499
+19:27:31 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":{"scopes":[{"column":5,"endColumn":null,"endLine":null,"expensive":false,"indexedVariables":null,"line":435,"name":"Locals","namedVariables":null,"source":{"adapterData":null,"checksums":null,"name":"lib.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-0.6.0/src","presentationHint":null,"sourceReference":null,"sources":null},"variablesReference":0}]},"command":"scopes","message":null,"request_seq":10,"seq":12,"success":true,"type":"response"}
+19:27:34 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 72
+19:27:34 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 115, 99, 111, 112, 101, 115, 34, 44, 34, 97, 114, 103, 117, 109, 101, 110, 116, 115, 34, 58, 123, 34, 102, 114, 97, 109, 101, 73, 100, 34, 58, 50, 125, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 49, 49, 125]
+19:27:34 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: Some(Object({"frameId": Number(2)})), command: "scopes", seq: 11, type_: "request" }
+19:27:34 [DEBUG] (1) probe_rs_debugadapter: Handling request scopes
+19:27:34 [DEBUG] (1) probe_rs_debugadapter: Arguments: ScopesArguments { frame_id: 2 }
+19:27:34 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 513
+19:27:34 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":{"scopes":[{"column":20,"endColumn":null,"endLine":null,"expensive":false,"indexedVariables":null,"line":360,"name":"Locals","namedVariables":null,"source":{"adapterData":null,"checksums":null,"name":"hi_res_timer.rs","origin":null,"path":"/home/dominik/.cargo/registry/src/github.com-1ecc6299db9ec823/nrf51-hal-0.6.2/src","presentationHint":null,"sourceReference":null,"sources":null},"variablesReference":2}]},"command":"scopes","message":null,"request_seq":11,"seq":13,"success":true,"type":"response"}
+19:27:34 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 86
+19:27:34 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 118, 97, 114, 105, 97, 98, 108, 101, 115, 34, 44, 34, 97, 114, 103, 117, 109, 101, 110, 116, 115, 34, 58, 123, 34, 118, 97, 114, 105, 97, 98, 108, 101, 115, 82, 101, 102, 101, 114, 101, 110, 99, 101, 34, 58, 50, 125, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 49, 50, 125]
+19:27:34 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: Some(Object({"variablesReference": Number(2)})), command: "variables", seq: 12, type_: "request" }
+19:27:34 [DEBUG] (1) probe_rs_debugadapter: Handling request variables
+19:27:34 [DEBUG] (1) probe_rs_debugadapter: Arguments: VariablesArguments { count: None, filter: None, format: None, start: None, variables_reference: 2 }
+19:27:34 [DEBUG] (1) probe_rs_debugadapter: [Variable { evaluate_name: None, indexed_variables: None, name: "fired", named_variables: None, presentation_hint: None, type_: Some("kek"), value: "536887116", variables_reference: -1 }]
+19:27:34 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > Content-Length: 284
+19:27:34 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: > {"body":{"variables":[{"evaluateName":null,"indexedVariables":null,"name":"fired","namedVariables":null,"presentationHint":null,"type":"kek","value":"536887116","variablesReference":-1}]},"command":"variables","message":null,"request_seq":12,"seq":14,"success":true,"type":"response"}
+19:27:44 [DEBUG] (1) probe_rs_debugadapter::debug_adapter: < Content-Length: 80
+19:27:44 [DEBUG] (1) probe_rs_debugadapter: < [123, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 34, 100, 105, 115, 99, 111, 110, 110, 101, 99, 116, 34, 44, 34, 97, 114, 103, 117, 109, 101, 110, 116, 115, 34, 58, 123, 34, 114, 101, 115, 116, 97, 114, 116, 34, 58, 102, 97, 108, 115, 101, 125, 44, 34, 116, 121, 112, 101, 34, 58, 34, 114, 101, 113, 117, 101, 115, 116, 34, 44, 34, 115, 101, 113, 34, 58, 49, 51, 125]
+19:27:44 [DEBUG] (1) probe_rs_debugadapter: < Request { arguments: Some(Object({"restart": Bool(false)})), command: "disconnect", seq: 13, type_: "request" }
+19:27:44 [DEBUG] (1) probe_rs_debugadapter: Handling request disconnect
+19:27:44 [DEBUG] (1) probe_rs_debugadapter: Arguments: DisconnectArguments { restart: Some(false), terminate_debuggee: None }
+19:27:44 [DEBUG] (1) probe_rs_debugadapter: Stopping debugger
+19:27:44 [DEBUG] (1) daplink::daplink: Detaching from DAPLink
+19:27:44 [DEBUG] (1) daplink::commands: Send buffer: [00, 03, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+19:27:44 [DEBUG] (1) daplink::commands: Receive buffer: [03, 00, 01, 7B, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]

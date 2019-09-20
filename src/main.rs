@@ -514,7 +514,7 @@ impl Debugger {
                             type_: None,
                             presentation_hint: None,
                             evaluate_name: None,
-                            variables_reference: args.variables_reference,
+                            variables_reference: -1,
                             named_variables: None,
                             indexed_variables: None,
                         }
