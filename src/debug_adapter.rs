@@ -1,3 +1,5 @@
+use debugserver_types::OutputEvent;
+use debugserver_types::OutputEventBody;
 use debugserver_types::StoppedEvent;
 use debugserver_types::ThreadEvent;
 use debugserver_types::ThreadEventBody;
@@ -98,6 +100,13 @@ impl<R: Read, W: Write> DebugAdapter<R,W> {
 
         self.send_data(&body)
     }
+
+    pub fn log_to_console<S: Into<String>>(&mut self, msg: S) -> Result<(), Error> {
+        let output_event = Event::console_output(msg.into());
+        self.send_event(&output_event)?;
+
+        Ok(())
+    }
 }
 
 
@@ -114,7 +123,7 @@ fn get_content_len(header: &str) -> Option<usize> {
 pub enum Event {
     Exited(i64),
     Module,
-    Output,
+    Output(OutputEventBody),
     Thread(ThreadEventBody),
     Process(ProcessEventBody),
     Stopped(StoppedEventBody),
@@ -155,10 +164,30 @@ impl Event {
                 type_: "event".to_owned(),
                 event: "stopped".to_owned(),
             })?,
+            Output(ref body) => serde_json::to_vec(&OutputEvent{
+                seq,
+                body: body.clone(),
+                type_: "event".to_owned(),
+                event: "output".to_owned(),
+            })?,
             _ => return Err(Error::Unimplemented),
         };
 
         Ok(data)
+    }
+
+    pub fn console_output(msg: String) -> Event {
+        Event::Output(
+            OutputEventBody {
+                output: msg,
+                category: Some("console".to_owned()),
+                variables_reference: None,
+                source: None,
+                line: None,
+                column: None,
+                data: None, 
+            }
+        )
     }
 }
 

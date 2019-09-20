@@ -44,11 +44,11 @@ fn main() -> Result<(), debug_adapter::Error> {
         let file = File::create(path)?;
 
         let cfg = ConfigBuilder::new()
-                         //       .add_filter_allow_str("probe_rs_debugadapter")
+                                .add_filter_allow_str("probe_rs_debugadapter")
                                 .build();
 
         // Ignore error setting up the debugger
-        let _ = WriteLogger::init(LevelFilter::Trace, cfg, file);
+        let _ = WriteLogger::init(LevelFilter::Debug, cfg, file);
     }
 
     let args: Vec<String> = env::args().collect();
@@ -180,6 +180,8 @@ impl Debugger {
                         self.session = Some(s);
 
                         info!("Attached to probe");
+
+                        adapter.log_to_console("Attached to probe")?;
 
                         let resp = AttachResponse {
                             command: "attach".to_owned(),
@@ -632,6 +634,9 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
+
+
+                adapter.log_to_console(format!("Received unsupported request '{}'\n", cmd))?;
             }
         }
 
