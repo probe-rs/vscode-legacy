@@ -27,6 +27,7 @@ use serde_json;
 
 use std::path::PathBuf;
 
+use log::trace;
 use log::debug;
 use log::info;
 use log::warn;
@@ -42,8 +43,12 @@ fn main() -> Result<(), debug_adapter::Error> {
     if let Ok(path) = env::var("PROBE_RS_LOGFILE") {
         let file = File::create(path)?;
 
+        let cfg = ConfigBuilder::new()
+                         //       .add_filter_allow_str("probe_rs_debugadapter")
+                                .build();
+
         // Ignore error setting up the debugger
-        let _ = WriteLogger::init(LevelFilter::Debug, Config::default(), file);
+        let _ = WriteLogger::init(LevelFilter::Trace, cfg, file);
     }
 
     let args: Vec<String> = env::args().collect();
@@ -89,10 +94,10 @@ fn main() -> Result<(), debug_adapter::Error> {
     // look for other request
     loop {
         let content = adapter.receive_data()?;
-        debug!("< {:?}", content);
+        trace!("< {:?}", content);
 
         let req: Request = serde_json::from_slice(&content)?;
-        debug!("< {:?}", req);
+        trace!("< {:?}", req);
 
         match dbg.handle(&mut adapter, &req) {
             Ok(r) => match r {
@@ -600,7 +605,34 @@ impl Debugger {
                 }
 
             },
-            _ => unimplemented!(),
+            cmd => {
+                error!("Received request {}, which is not supported / implemented yet", cmd);
+
+                let resp = ErrorResponse {
+                    command: cmd.to_owned(),
+                    success: false,
+                    request_seq: req.seq,
+                    seq: adapter.peek_seq(),
+                    type_: "response".to_owned(),
+
+                    body: ErrorResponseBody {
+                        error: Some(Message { 
+                            id: 1,
+                            send_telemetry: Some(false),
+                            format: "This type of request is not yet supported.".to_owned(),
+                            variables: None,
+                            show_user: Some(true),
+                            url: None,
+                            url_label: None,
+                        }),
+                    },
+                    message: Some("cancelled".to_owned()),
+                };
+
+                let encoded_resp = serde_json::to_vec(&resp)?;
+
+                adapter.send_data(&encoded_resp)?;
+            }
         }
 
         Ok(HandleResult::Continue)
