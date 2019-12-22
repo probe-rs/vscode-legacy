@@ -15,7 +15,7 @@
 			"outFiles": [
 				"${workspaceFolder}/out/**/*.js"
 			],
-			"preLaunchTask": "cargo: build"
+			"preLaunchTask": "Extension build"
 		},
 	]
 }

@@ -1,3 +1,7 @@
+use debugserver_types::BreakpointEvent;
+use debugserver_types::BreakpointEventBody;
+use debugserver_types::TerminatedEvent;
+use debugserver_types::TerminatedEventBody;
 use debugserver_types::OutputEvent;
 use debugserver_types::OutputEventBody;
 use debugserver_types::StoppedEvent;
@@ -5,7 +9,9 @@ use debugserver_types::ThreadEvent;
 use debugserver_types::ThreadEventBody;
 use debugserver_types::ProcessEvent;
 use debugserver_types::ProcessEventBody;
-use log::debug;
+use log::trace;
+
+use probe_rs::probe::DebugProbeError;
 
 use std::io;
 use std::io::{Read, Write};
@@ -22,6 +28,9 @@ use debugserver_types::{
 pub enum Error {
     IoError(io::Error),
     SerdeError(serde_json::Error),
+    DebugProbeError(DebugProbeError),
+    MissingSession,
+    InvalidRequest,
     Unimplemented,
 }
 
@@ -34,6 +43,12 @@ impl From<io::Error> for Error {
 impl From<serde_json::Error> for Error {
     fn from(e: serde_json::Error) -> Self {
         Error::SerdeError(e)
+    }
+}
+
+impl From<DebugProbeError> for Error {
+    fn from(e: DebugProbeError) -> Self {
+        Error::DebugProbeError(e)
     }
 }
 
@@ -60,7 +75,7 @@ impl<R: Read, W: Write> DebugAdapter<R,W> {
         let mut header = String::new();
 
         self.input.read_line(&mut header)?;
-        debug!("< {}", header.trim_end());
+        trace!("< {}", header.trim_end());
 
         // we should read an empty line here
         let mut buff = String::new();
@@ -82,8 +97,8 @@ impl<R: Read, W: Write> DebugAdapter<R,W> {
 
         let response_header = format!("Content-Length: {}\r\n\r\n", response_body.len());
 
-        debug!("> {}", response_header.trim_end());
-        debug!("> {}", str::from_utf8(response_body).unwrap());
+        trace!("> {}", response_header.trim_end());
+        trace!("> {}", str::from_utf8(response_body).unwrap());
 
         self.output.write(response_header.as_bytes())?;
         self.output.write(response_body)?;
@@ -128,7 +143,7 @@ pub enum Event {
     Process(ProcessEventBody),
     Stopped(StoppedEventBody),
     Continued,
-    Breakpoint,
+    Breakpoint(BreakpointEventBody),
     Terminated(RestartRequest),
     Initialized,
     Capabilities,
@@ -170,6 +185,26 @@ impl Event {
                 type_: "event".to_owned(),
                 event: "output".to_owned(),
             })?,
+            Terminated(restart_request) => {
+                let body = TerminatedEventBody {
+                    restart: Some(
+                        serde_json::Value::Bool(restart_request == &RestartRequest::Yes)
+                    ),
+                };
+
+                serde_json::to_vec(&TerminatedEvent{
+                    seq,
+                    body: Some(body),
+                    type_: "event".to_owned(),
+                    event: "terminated".to_owned(),
+                })?
+            },
+            Breakpoint(ref body) => serde_json::to_vec(&BreakpointEvent{
+                seq,
+                body: body.clone(),
+                type_: "event".to_owned(),
+                event: "breakpoint".to_owned(),
+            })? ,
             _ => return Err(Error::Unimplemented),
         };
 
@@ -191,7 +226,7 @@ impl Event {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone, PartialEq)]
 pub enum RestartRequest {
     Yes,
     No

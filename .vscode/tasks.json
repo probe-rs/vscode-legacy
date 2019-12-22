@@ -6,7 +6,26 @@
         {
             "label": "cargo: build",
             "type": "shell",
-            "command": "cargo build"
+            "command": "cargo build",
+            "group": "build"
+        },
+        {
+            "type": "npm",
+            "script": "compile",
+            "problemMatcher": "$tsc",
+            "group": "build"
+        },
+        {
+            "label": "Extension build",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "cargo: build",
+                "npm: compile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

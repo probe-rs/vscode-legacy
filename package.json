@@ -33,6 +33,26 @@
 								"type": "string",
 								"description": "Path to program to debug",
 								"default": "program.elf"
+							},
+							"server_mode": {
+								"type": "boolean",
+								"description": "Attach in server mode",
+								"default": false
+							},
+							"server_port": {
+								"type": "integer",
+								"description": "Port to attach to in server mode",
+								"default": 8000
+							},
+							"reset": {
+								"type": "boolean",
+								"description": "Reset target when attaching",
+								"default": false
+							},
+							"halt_after_reset": {
+								"type": "boolean",
+								"description": "Halt target after reset",
+								"default": true
 							}
 						}
 					}
@@ -60,6 +80,10 @@
 			}
 		]
 	},
+	"main": "./out/extension.js",
+	"activationEvents": [
+		"onDebugAdapterProtocolTracker:probe_rs"
+	],
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
 		"compile": "tsc -p ./",
@@ -68,10 +92,10 @@
 		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"typescript": "^3.3.1",
-		"vscode": "^1.1.28",
-		"tslint": "^5.12.1",
+		"@types/mocha": "^2.2.42",
 		"@types/node": "^10.12.21",
-		"@types/mocha": "^2.2.42"
+		"tslint": "^5.20.0",
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28"
 	}
 }

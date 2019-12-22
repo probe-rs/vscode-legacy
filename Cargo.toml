@@ -13,12 +13,10 @@ serde_json = "*"
 serde = { version = "1.0", features = ["derive"] }
 log = "*"
 simplelog = "0.7.1"
+clap = "2.33.0"
 
-memory = { git = "https://github.com/probe-rs/probe-rs", branch="m0-debug" }
-probe = { git = "https://github.com/probe-rs/probe-rs", branch = "m0-debug" }
-daplink = { git = "https://github.com/probe-rs/probe-rs", branch="m0-debug" }
-coresight  = { git = "https://github.com/probe-rs/probe-rs", branch="m0-debug" }
-probe-rs-debug  = { git = "https://github.com/probe-rs/probe-rs", branch="m0-debug" }
+probe-rs = { git = "https://github.com/probe-rs/probe-rs", branch="add-source-breakpoints" }
+
 
 [dev-dependencies]
 assert_cmd = "0.10"
