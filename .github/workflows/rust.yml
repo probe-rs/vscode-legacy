@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Install libusb
       run: sudo apt install -y libusb-dev libusb-1.0
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build
       uses: actions-rs/cargo@v1
       with:
@@ -18,9 +18,9 @@ jobs:
   windows-build:
     strategy:
       matrix:
-        target:
-          - windows-msvc
-          - windows-gnu
+        toolchain:
+          - stable-msvc
+          - stable-gnu
 
     runs-on: windows-latest 
 
@@ -31,8 +31,7 @@ jobs:
     - name: Install toolchain
       uses: actions-rs/toolchain@v1
       with: 
-        toolchain: stable
-        target: ${{ matrix.target }}
+        toolchain: ${{ matrix.toolchain }}
         override: true
 
     - name: Build
