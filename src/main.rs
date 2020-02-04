@@ -1,37 +1,37 @@
 mod debug_adapter;
 
-use probe_rs::probe::{DebugProbe, DebugProbeError};
-use debugserver_types::*;
 use debug_adapter::{DebugAdapter, Event};
+use debugserver_types::*;
+use probe_rs::probe::{DebugProbe, DebugProbeError};
 
 use probe_rs::probe::daplink;
 
-use probe_rs::probe::MasterProbe;
 use probe_rs;
-use probe_rs::config::registry::SelectionStrategy;
 use probe_rs::config::registry::Registry;
+use probe_rs::config::registry::SelectionStrategy;
+use probe_rs::probe::MasterProbe;
 
-use probe_rs::session::Session;
 use probe_rs::debug::DebugInfo;
+use probe_rs::session::Session;
 
-use debugserver_types::Request;
 use debugserver_types::LaunchResponse;
+use debugserver_types::Request;
 use std::fs::File;
 use std::io;
-use std::io::{Read,Write};
+use std::io::{Read, Write};
 
 use std::env;
 
-use debugserver_types::{InitializeRequest, InitializeResponse, Capabilities};
+use debugserver_types::{Capabilities, InitializeRequest, InitializeResponse};
 use serde_json;
 
-use std::path::{ Path, PathBuf };
+use std::path::{Path, PathBuf};
 
-use log::trace;
 use log::debug;
-use log::info;
-use log::warn;
 use log::error;
+use log::info;
+use log::trace;
+use log::warn;
 
 use simplelog::*;
 
@@ -39,33 +39,37 @@ use clap::{App, Arg};
 
 use std::net::{SocketAddr, TcpListener};
 
-
-use serde::Deserialize;
 use serde::de::DeserializeOwned;
+use serde::Deserialize;
 
 fn main() -> Result<(), debug_adapter::Error> {
-
-
     let matches = App::new("probe-rs - Debug Adapter for vscode")
-                    .arg(Arg::with_name("server").long("server"))
-                    .arg(Arg::with_name("port").short("p").long("port").takes_value(true).max_values(1))
-                    .get_matches();
-
+        .arg(Arg::with_name("server").long("server"))
+        .arg(
+            Arg::with_name("port")
+                .short("p")
+                .long("port")
+                .takes_value(true)
+                .max_values(1),
+        )
+        .get_matches();
 
     let current_dir = env::current_dir()?;
 
     let cfg = ConfigBuilder::new()
-                            //.add_filter_allow_str("probe_rs_debugadapter")
-                            .build();
-    
-                            let log_level = LevelFilter::Debug;
+        //.add_filter_allow_str("probe_rs_debugadapter")
+        .build();
 
+    let log_level = LevelFilter::Debug;
 
     if matches.is_present("server") {
         // Setup terminal logger
         let _ = TermLogger::init(log_level, cfg, TerminalMode::Mixed);
 
-        let port: u16 = matches.value_of("port").map(|s| u16::from_str_radix(s, 10).unwrap()).unwrap_or(8000);
+        let port: u16 = matches
+            .value_of("port")
+            .map(|s| u16::from_str_radix(s, 10).unwrap())
+            .unwrap_or(8000);
         info!("Starting in server mode on port {}", port);
 
         let addr = SocketAddr::from(([127, 0, 0, 1], port));
@@ -76,17 +80,15 @@ fn main() -> Result<(), debug_adapter::Error> {
 
         info!("Accepted connection from {}", addr);
 
-
         let reader = socket.try_clone()?;
         let writer = socket;
 
         let adapter = DebugAdapter::new(reader, writer);
 
-        run(adapter)
+        run(adapter, &current_dir)
     } else {
         if let Ok(path) = env::var("PROBE_RS_LOGFILE") {
             let file = File::create(path)?;
-
 
             // Ignore error setting up the debugger
             let _ = WriteLogger::init(log_level, cfg, file);
@@ -95,17 +97,21 @@ fn main() -> Result<(), debug_adapter::Error> {
 
         let adapter = DebugAdapter::new(io::stdin(), io::stdout());
 
-        run(adapter)
+        run(adapter, &current_dir)
     }
-
-
 }
 
-fn run<R: Read, W: Write>(mut adapter: DebugAdapter<R,W>) -> Result<(), debug_adapter::Error> {
+fn run<R: Read, W: Write>(
+    mut adapter: DebugAdapter<R, W>,
+    cwd: &PathBuf,
+) -> Result<(), debug_adapter::Error> {
     let data = adapter.receive_data()?;
     let req: InitializeRequest = serde_json::from_slice(&data)?;
 
-    debug!("Initialization request from client '{}'", req.arguments.client_name.unwrap_or("<unknown>".to_owned()));
+    debug!(
+        "Initialization request from client '{}'",
+        req.arguments.client_name.unwrap_or("<unknown>".to_owned())
+    );
 
     let capabilities = Capabilities {
         supports_configuration_done_request: Some(true),
@@ -133,12 +139,10 @@ fn run<R: Read, W: Write>(mut adapter: DebugAdapter<R,W>) -> Result<(), debug_ad
     adapter.send_event(&Event::Initialized)?;
 
     let mut dbg = Debugger {
-        // nasty hack to get a proper location
-        location: "/home/dominik/Coding/microbit".into(),
+        location: cwd.to_owned(),
         ..Debugger::default()
     };
 
-    
     // look for other request
     loop {
         let content = adapter.receive_data()?;
@@ -150,7 +154,9 @@ fn run<R: Read, W: Write>(mut adapter: DebugAdapter<R,W>) -> Result<(), debug_ad
         match dbg.handle(&mut adapter, &req) {
             Ok(r) => match r {
                 HandleResult::Continue => (),
-                HandleResult::Stop => { break; },
+                HandleResult::Stop => {
+                    break;
+                }
             },
             Err(e) => {
                 error!("Failed to handle request from debug client: {:?}", e);
@@ -164,12 +170,11 @@ fn run<R: Read, W: Write>(mut adapter: DebugAdapter<R,W>) -> Result<(), debug_ad
     debug!("Stopping debugger");
 
     Ok(())
-
 }
 
 enum HandleResult {
     Continue,
-    Stop
+    Stop,
 }
 
 #[derive(Default)]
@@ -205,24 +210,26 @@ impl BreakpointInfo {
                 message: None,
                 verified: self.verified,
                 source: None,
-            }
+            },
         }
     }
 }
 
 fn get_arguments<T: DeserializeOwned>(req: &Request) -> Result<T, debug_adapter::Error> {
-    let value = req.arguments.as_ref().ok_or(debug_adapter::Error::InvalidRequest)?;
+    let value = req
+        .arguments
+        .as_ref()
+        .ok_or(debug_adapter::Error::InvalidRequest)?;
 
     serde_json::from_value(value.to_owned()).map_err(|e| e.into())
 }
 
 impl Debugger {
-
     fn add_breakpoint(&mut self, bp: &SourceBreakpoint, verified: bool, location: Option<u64>) {
         let id = self.bp_id;
         self.bp_id += 1;
 
-        self.breakpoints.push(BreakpointInfo{
+        self.breakpoints.push(BreakpointInfo {
             id,
             verified,
             info: bp.to_owned(),
@@ -230,7 +237,11 @@ impl Debugger {
         });
     }
 
-    fn handle<R: Read, W: Write>(&mut self, adapter: &mut DebugAdapter<R,W>, req: &Request) -> Result<HandleResult, debug_adapter::Error> {
+    fn handle<R: Read, W: Write>(
+        &mut self,
+        adapter: &mut DebugAdapter<R, W>,
+        req: &Request,
+    ) -> Result<HandleResult, debug_adapter::Error> {
         debug!("Handling request {}", req.command);
 
         match req.command.as_ref() {
@@ -254,12 +265,17 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
-            },
+            }
             "attach" => {
                 let args: AttachRequestArguments = get_arguments(req)?;
                 trace!("Arguments: {:?}", args);
 
                 self.program = Some(args.program.clone().into());
+
+                if let Some(ref cwd) = args.cwd {
+                    debug!("Current working directory: '{}'", cwd);
+                    self.location = PathBuf::from(cwd);
+                }
 
                 self.debug_info = match DebugInfo::from_file(&args.program) {
                     Ok(di) => Some(di),
@@ -272,7 +288,7 @@ impl Debugger {
                     }
                 };
 
-                let session = connect_to_probe();
+                let session = connect_to_probe(&args.chip);
 
                 self.arguments = args;
 
@@ -301,11 +317,18 @@ impl Debugger {
                         if self.breakpoints.len() > 0 {
                             let session = self.session.as_mut().unwrap();
 
-                            session.target.core.enable_breakpoints(&mut session.probe, true)?;
+                            session
+                                .target
+                                .core
+                                .enable_breakpoints(&mut session.probe, true)?;
 
                             for bp in self.breakpoints.iter_mut() {
                                 if let Some(location) = bp.address {
-                                    session.target.core.set_breakpoint(&mut session.probe, location as u32)?;
+                                    session.target.core.set_breakpoint(
+                                        &mut session.probe,
+                                        0,
+                                        location as u32,
+                                    )?;
 
                                     bp.verified = true;
 
@@ -313,10 +336,10 @@ impl Debugger {
                                 }
                             }
                         }
-                    },
+                    }
                     Err(e) => {
                         warn!("Failed to attacht to probe: {:?}", e);
-                        
+
                         let resp = AttachResponse {
                             command: "attach".to_owned(),
                             request_seq: req.seq,
@@ -332,7 +355,7 @@ impl Debugger {
                         adapter.send_data(&encoded_resp)?;
                     }
                 }
-            },
+            }
             "disconnect" => {
                 let args: DisconnectArguments = get_arguments(req)?;
                 trace!("Arguments: {:?}", args);
@@ -352,14 +375,17 @@ impl Debugger {
                 adapter.send_data(&encoded_resp)?;
 
                 return Ok(HandleResult::Stop);
-            },
+            }
             "setBreakpoints" => {
                 let args: SetBreakpointsArguments = get_arguments(req)?;
 
                 trace!("Arguments: {:?}", args);
 
                 if let Some(session) = self.session.as_mut() {
-                    session.target.core.enable_breakpoints(&mut session.probe, true)?;
+                    session
+                        .target
+                        .core
+                        .enable_breakpoints(&mut session.probe, true)?;
                 }
 
                 let mut create_breakpoints = Vec::new();
@@ -369,23 +395,32 @@ impl Debugger {
                 debug!("Source path: {:?}", source_path);
 
                 if let Some(breakpoints) = args.breakpoints.as_ref() {
-
                     for bp in breakpoints {
-
                         // Try to find source code location
-                        debug!("Trying to set breakpoint {:?}, source_file {:?}", bp, source_path);
-
-
-                        let source_location: Option<u64> = self.debug_info.as_ref().and_then( |di| 
-
-                            di.get_breakpoint_location(dbg!(source_path.unwrap()), dbg!(bp.line as u64), bp.column.map(|c| c as u64)).unwrap_or(None)
+                        debug!(
+                            "Trying to set breakpoint {:?}, source_file {:?}",
+                            bp, source_path
                         );
+
+                        let source_location: Option<u64> =
+                            self.debug_info.as_ref().and_then(|di| {
+                                di.get_breakpoint_location(
+                                    dbg!(source_path.unwrap()),
+                                    dbg!(bp.line as u64),
+                                    bp.column.map(|c| c as u64),
+                                )
+                                .unwrap_or(None)
+                            });
 
                         if let Some(location) = source_location {
                             debug!("Found source location: {:#08x}!", location);
 
                             let verified = if let Some(session) = self.session.as_mut() {
-                                session.target.core.set_breakpoint(&mut session.probe, location as u32 )?;
+                                session.target.core.set_breakpoint(
+                                    &mut session.probe,
+                                    0,
+                                    location as u32,
+                                )?;
                                 true
                             } else {
                                 false
@@ -393,7 +428,7 @@ impl Debugger {
 
                             self.add_breakpoint(bp, verified, source_location);
 
-                            create_breakpoints.push(Breakpoint{
+                            create_breakpoints.push(Breakpoint {
                                 column: bp.column,
                                 end_column: None,
                                 end_line: None,
@@ -406,7 +441,7 @@ impl Debugger {
                         } else {
                             warn!("Failed to find location for breakpoint {:?}", bp);
 
-                            create_breakpoints.push(Breakpoint{
+                            create_breakpoints.push(Breakpoint {
                                 column: bp.column,
                                 end_column: None,
                                 end_line: None,
@@ -439,8 +474,7 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
-
-            },
+            }
             "setExceptionBreakpoints" => {
                 let args: SetExceptionBreakpointsArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
@@ -458,7 +492,7 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
-            },
+            }
             "configurationDone" => {
                 //let args: ConfigurationDoneArguments = get_arguments(req)?;
                 //debug!("Arguments: {:?}", args);
@@ -488,12 +522,15 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
-            },
+            }
             "threads" => {
                 //let args: ThreadsArguments = serde_json::from_value(req.arguments.as_ref().unwrap().clone()).unwrap();
                 //debug!("Arguments: {:?}", args);
 
-                let single_thread = Thread { id: 0, name: "Main Thread".to_owned() };
+                let single_thread = Thread {
+                    id: 0,
+                    name: "Main Thread".to_owned(),
+                };
 
                 let threads = vec![single_thread];
 
@@ -502,9 +539,7 @@ impl Debugger {
                     request_seq: req.seq,
                     seq: adapter.peek_seq(),
                     success: true,
-                    body: ThreadsResponseBody{
-                        threads,
-                    },
+                    body: ThreadsResponseBody { threads },
                     type_: "response".to_owned(),
 
                     message: None,
@@ -513,11 +548,10 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
-            },
+            }
             "pause" => {
                 let args: PauseArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
-
 
                 let resp = PauseResponse {
                     command: "pause".to_owned(),
@@ -548,13 +582,12 @@ impl Debugger {
                         adapter.send_event(&Event::Stopped(event_body))?;
 
                         debug!("Sended stopped event");
-                    },
+                    }
                     Err(e) => {
                         warn!("Error trying to pause target: {:?}", e);
                     }
-                } 
-
-            },
+                }
+            }
             "stackTrace" => {
                 let args: StackTraceArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
@@ -563,32 +596,41 @@ impl Debugger {
 
                 let regs = session.target.core.registers();
 
-                let pc = session.target.core.read_core_reg(&mut session.probe, regs.PC).unwrap();
+                let pc = session
+                    .target
+                    .core
+                    .read_core_reg(&mut session.probe, regs.PC)
+                    .unwrap();
                 debug!("Stopped at address 0x{:08x}", pc);
 
                 let debug_info = self.debug_info.as_ref().unwrap();
 
-
                 self.current_stackframes = debug_info.try_unwind(session, pc as u64).collect();
 
-                let frame_list: Vec<StackFrame> = self.current_stackframes.iter().map(|f| {
+                let frame_list: Vec<StackFrame> = self
+                    .current_stackframes
+                    .iter()
+                    .map(|f| {
+                        use probe_rs::debug::ColumnType::*;
 
-                    use probe_rs::debug::ColumnType::*;
+                        let column = f
+                            .source_location
+                            .as_ref()
+                            .and_then(|sl| {
+                                sl.column.map(|col| match col {
+                                    LeftEdge => 0,
+                                    Column(c) => c,
+                                })
+                            })
+                            .unwrap_or(0);
 
-                    let column = f.source_location.as_ref().and_then( |sl| sl.column.map(|col| { match col {
-                        LeftEdge => 0,
-                        Column(c) => c,
-                    }})).unwrap_or(0);
+                        let sl = f.source_location.as_ref().unwrap();
 
-                    let sl = f.source_location.as_ref().unwrap();
+                        let mut path: PathBuf = sl.directory.as_ref().unwrap().into();
 
-                    let mut path: PathBuf = sl.directory.as_ref().unwrap().into();
+                        path.push(sl.file.as_ref().unwrap());
 
-                    path.push(sl.file.as_ref().unwrap());
-
-
-                    let source = Some(
-                        Source{
+                        let source = Some(Source {
                             name: Some(sl.file.clone().unwrap()),
                             path: path.to_str().map(|s| s.to_owned()),
                             source_reference: None,
@@ -597,25 +639,35 @@ impl Debugger {
                             sources: None,
                             adapter_data: None,
                             checksums: None,
+                        });
+
+                        let line = f
+                            .source_location
+                            .as_ref()
+                            .and_then(|sl| sl.line)
+                            .unwrap_or(0) as i64;
+
+                        debug!(
+                            "  Frame {: <2} - {}:{}:{}",
+                            f.id,
+                            path.display(),
+                            line,
+                            column
+                        );
+
+                        StackFrame {
+                            id: f.id as i64,
+                            name: f.function_name.clone(),
+                            source: source,
+                            line: line,
+                            column: column as i64,
+                            end_column: None,
+                            end_line: None,
+                            module_id: None,
+                            presentation_hint: Some("normal".to_owned()),
                         }
-                    );
-
-                    let line = f.source_location.as_ref().and_then( |sl| sl.line ).unwrap_or(0) as i64;
-
-                    debug!("  Frame {: <2} - {}:{}:{}", f.id, path.display(), line, column);
-
-                    StackFrame {
-                        id: f.id as i64,
-                        name: f.function_name.clone(),
-                        source: source,
-                        line: line,
-                        column: column as i64,
-                        end_column: None,
-                        end_line: None,
-                        module_id: None,
-                        presentation_hint: Some("normal".to_owned()),
-                    }
-                }).collect();
+                    })
+                    .collect();
 
                 let frame_len = frame_list.len();
 
@@ -637,39 +689,45 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
-            },
+            }
             "scopes" => {
                 let args: ScopesArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
                 let mut scopes = vec![];
-                
-                if let Some(frame) = self.current_stackframes.iter().find(|sf| sf.id == args.frame_id as u64) {
+
+                if let Some(frame) = self
+                    .current_stackframes
+                    .iter()
+                    .find(|sf| sf.id == args.frame_id as u64)
+                {
                     use probe_rs::debug::ColumnType::*;
 
                     let sl = frame.source_location.as_ref().unwrap();
                     let path: PathBuf = sl.directory.as_ref().unwrap().into();
 
-                    let source = Some(
-                        Source{
-                            name: Some(sl.file.clone().unwrap()),
-                            path: path.to_str().map(|s| s.to_owned()),
-                            source_reference: None,
-                            presentation_hint: None,
-                            origin: None,
-                            sources: None,
-                            adapter_data: None,
-                            checksums: None,
-                        }
-                    );
-
+                    let source = Some(Source {
+                        name: Some(sl.file.clone().unwrap()),
+                        path: path.to_str().map(|s| s.to_owned()),
+                        source_reference: None,
+                        presentation_hint: None,
+                        origin: None,
+                        sources: None,
+                        adapter_data: None,
+                        checksums: None,
+                    });
 
                     let scope = Scope {
-                        line: frame.source_location.as_ref().and_then(|l| l.line.map(|l| l as i64)),
-                        column: frame.source_location.as_ref().and_then(|l| l.column.map(|c| match c {
-                            LeftEdge => 0,
-                            Column(c) => c as i64,
-                        })),
+                        line: frame
+                            .source_location
+                            .as_ref()
+                            .and_then(|l| l.line.map(|l| l as i64)),
+                        column: frame.source_location.as_ref().and_then(|l| {
+                            l.column.map(|c| match c {
+                                LeftEdge => 0,
+                                Column(c) => c as i64,
+                            })
+                        }),
                         end_column: None,
                         end_line: None,
                         expensive: false,
@@ -688,9 +746,7 @@ impl Debugger {
                     request_seq: req.seq,
                     seq: adapter.peek_seq(),
                     success: true,
-                    body: ScopesResponseBody {
-                        scopes,
-                    },
+                    body: ScopesResponseBody { scopes },
                     type_: "response".to_owned(),
                     message: None,
                 };
@@ -698,7 +754,7 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
-            },
+            }
             "source" => {
                 let args: SourceArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
@@ -734,9 +790,8 @@ impl Debugger {
                                 content: format!("Unable to open resource: {}", e),
                                 mime_type: None,
                             },
-                        }
+                        },
                     }
-
                 } else {
                     SourceResponse {
                         type_: "response".to_owned(),
@@ -750,26 +805,26 @@ impl Debugger {
                             mime_type: None,
                         },
                     }
-
                 };
-
-
 
                 let encoded_resp = serde_json::to_vec(&resp)?;
                 adapter.send_data(&encoded_resp)?;
-            },
+            }
             "variables" => {
                 let args: VariablesArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
                 let mut variables = vec![];
 
-                if let Some(frame) = self.current_stackframes.iter().find(|sf| sf.id == args.variables_reference as u64) {
+                if let Some(frame) = self
+                    .current_stackframes
+                    .iter()
+                    .find(|sf| sf.id == args.variables_reference as u64)
+                {
                     variables = frame
                         .variables
                         .iter()
-                        .map(|variable| {
-                        Variable {
+                        .map(|variable| Variable {
                             name: variable.name.clone(),
                             value: variable.value.to_string(),
                             type_: None,
@@ -778,8 +833,8 @@ impl Debugger {
                             variables_reference: -1,
                             named_variables: None,
                             indexed_variables: None,
-                        }
-                    }).collect();
+                        })
+                        .collect();
                     debug!("{:?}", &variables);
                 }
 
@@ -788,9 +843,7 @@ impl Debugger {
                     request_seq: req.seq,
                     seq: adapter.peek_seq(),
                     success: true,
-                    body: VariablesResponseBody {
-                        variables,
-                    },
+                    body: VariablesResponseBody { variables },
                     type_: "response".to_owned(),
                     message: None,
                 };
@@ -798,13 +851,17 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
-            },
+            }
             "continue" => {
                 let args: ContinueArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
                 if let Some(ref mut session) = self.session {
-                    session.target.core.run(&mut session.probe).expect("Failed to continue running target.");
+                    session
+                        .target
+                        .core
+                        .run(&mut session.probe)
+                        .expect("Failed to continue running target.");
                 }
 
                 let resp = ContinueResponse {
@@ -822,7 +879,7 @@ impl Debugger {
                 let encoded_resp = serde_json::to_vec(&resp)?;
 
                 adapter.send_data(&encoded_resp)?;
-            },
+            }
             "next" => {
                 let args: NextArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
@@ -842,7 +899,11 @@ impl Debugger {
                 adapter.send_data(&encoded_resp)?;
 
                 if let Some(ref mut session) = self.session {
-                    let _cpu_info = session.target.core.step(&mut session.probe).expect("Failed to continue running target.");
+                    let _cpu_info = session
+                        .target
+                        .core
+                        .step(&mut session.probe)
+                        .expect("Failed to continue running target.");
 
                     debug!("Stopped, sending pause event");
 
@@ -857,12 +918,13 @@ impl Debugger {
                     adapter.send_event(&Event::Stopped(event_body))?;
 
                     debug!("Sended pause event");
-
                 }
-
-            },
+            }
             cmd => {
-                error!("Received request {}, which is not supported / implemented yet", cmd);
+                error!(
+                    "Received request {}, which is not supported / implemented yet",
+                    cmd
+                );
 
                 let resp = ErrorResponse {
                     command: cmd.to_owned(),
@@ -872,7 +934,7 @@ impl Debugger {
                     type_: "response".to_owned(),
 
                     body: ErrorResponseBody {
-                        error: Some(Message { 
+                        error: Some(Message {
                             id: 1,
                             send_telemetry: Some(false),
                             format: "This type of request is not yet supported.".to_owned(),
@@ -889,7 +951,6 @@ impl Debugger {
 
                 adapter.send_data(&encoded_resp)?;
 
-
                 adapter.log_to_console(format!("Received unsupported request '{}'\n", cmd))?;
             }
         }
@@ -905,35 +966,36 @@ impl Debugger {
                 debug!("Paused target at pc=0x{:08x}", cpi.pc);
 
                 Ok(true)
-            },
-            None => {
-                Ok(false)
             }
+            None => Ok(false),
         }
     }
 }
 
-
 #[derive(Deserialize, Debug, Default)]
 struct AttachRequestArguments {
     program: String,
+    chip: String,
+    cwd: Option<String>,
     reset: Option<bool>,
     halt_after_reset: Option<bool>,
 }
 
-
-fn connect_to_probe() -> Result<Session, DebugProbeError> {
-    let device = daplink::tools::list_daplink_devices().pop().ok_or(DebugProbeError::ProbeCouldNotBeCreated)?;
-
+fn connect_to_probe(target: &str) -> Result<Session, DebugProbeError> {
+    let device = daplink::tools::list_daplink_devices()
+        .pop()
+        .ok_or(DebugProbeError::ProbeCouldNotBeCreated)?;
 
     let mut link = daplink::DAPLink::new_from_probe_info(&device)?;
 
     link.attach(Some(probe_rs::probe::WireProtocol::Swd))?;
-    
+
     let probe = MasterProbe::from_specific_probe(link);
 
     let registry = Registry::from_builtin_families();
-    let target = registry.get_target(SelectionStrategy::TargetIdentifier("nrf51822".into())).expect("Failed to select target");
-    
+    let target = registry
+        .get_target(SelectionStrategy::TargetIdentifier(target.into()))
+        .expect("Failed to select target");
+
     Ok(Session::new(target, probe))
 }

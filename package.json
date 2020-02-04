@@ -26,13 +26,23 @@
 				"configurationAttributes": {
 					"attach": {
 						"required": [
-							"program"
+							"program",
+							"chip"
 						],
 						"properties": {
 							"program": {
 								"type": "string",
 								"description": "Path to program to debug",
 								"default": "program.elf"
+							},
+							"chip": {
+								"type": "string",
+								"description": "Chip to debug, e.g. nrf5182"
+							},
+							"cwd": {
+								"type": "string",
+								"description": "Working directory of the debugger, typically the crate root",
+								"default": "${workspaceRoot}"
 							},
 							"server_mode": {
 								"type": "boolean",
@@ -62,7 +72,8 @@
 						"type": "probe_rs",
 						"request": "attach",
 						"name": "probe-rs Test",
-						"program": "program.elf"
+						"program": "program.elf",
+						"chip": "cortex-m0"
 					}
 				],
 				"configurationSnippets": [
@@ -73,7 +84,8 @@
 							"type": "probe_rs",
 							"request": "attach",
 							"name": "probe-rs Test",
-							"program": "program.elf"
+							"program": "program.elf",
+							"chip": "cortex-m0"
 						}
 					}
 				]

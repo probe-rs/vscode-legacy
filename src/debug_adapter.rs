@@ -1,28 +1,25 @@
 use debugserver_types::BreakpointEvent;
 use debugserver_types::BreakpointEventBody;
-use debugserver_types::TerminatedEvent;
-use debugserver_types::TerminatedEventBody;
 use debugserver_types::OutputEvent;
 use debugserver_types::OutputEventBody;
-use debugserver_types::StoppedEvent;
-use debugserver_types::ThreadEvent;
-use debugserver_types::ThreadEventBody;
 use debugserver_types::ProcessEvent;
 use debugserver_types::ProcessEventBody;
+use debugserver_types::StoppedEvent;
+use debugserver_types::TerminatedEvent;
+use debugserver_types::TerminatedEventBody;
+use debugserver_types::ThreadEvent;
+use debugserver_types::ThreadEventBody;
 use log::trace;
 
 use probe_rs::probe::DebugProbeError;
 
 use std::io;
-use std::io::{Read, Write};
 use std::io::{BufRead, BufReader};
+use std::io::{Read, Write};
 
 use std::str;
 
-use debugserver_types::{
-    InitializedEvent,
-    StoppedEventBody
-};
+use debugserver_types::{InitializedEvent, StoppedEventBody};
 
 #[derive(Debug)]
 pub enum Error {
@@ -58,12 +55,12 @@ pub struct DebugAdapter<R: Read, W: Write> {
     output: W,
 }
 
-impl<R: Read, W: Write> DebugAdapter<R,W> {
-    pub fn new(input: R, output: W) -> DebugAdapter<R,W> {
+impl<R: Read, W: Write> DebugAdapter<R, W> {
+    pub fn new(input: R, output: W) -> DebugAdapter<R, W> {
         DebugAdapter {
             seq: 1,
             input: BufReader::new(input),
-            output
+            output,
         }
     }
 
@@ -89,7 +86,6 @@ impl<R: Read, W: Write> DebugAdapter<R,W> {
         assert!(bytes_read == len);
 
         Ok(content)
-
     }
 
     pub fn send_data(&mut self, raw_data: &[u8]) -> Result<(), Error> {
@@ -124,7 +120,6 @@ impl<R: Read, W: Write> DebugAdapter<R,W> {
     }
 }
 
-
 fn get_content_len(header: &str) -> Option<usize> {
     let mut parts = header.trim_end().split_ascii_whitespace();
 
@@ -147,7 +142,7 @@ pub enum Event {
     Terminated(RestartRequest),
     Initialized,
     Capabilities,
-    LoadedSource
+    LoadedSource,
 }
 
 impl Event {
@@ -161,25 +156,25 @@ impl Event {
                 type_: "event".to_owned(),
                 event: "initialized".to_owned(),
             })?,
-            Process(ref body) => serde_json::to_vec(&ProcessEvent{
+            Process(ref body) => serde_json::to_vec(&ProcessEvent {
                 seq,
                 body: body.clone(),
                 type_: "event".to_owned(),
                 event: "process".to_owned(),
             })?,
-            Thread(ref body) => serde_json::to_vec(&ThreadEvent{
+            Thread(ref body) => serde_json::to_vec(&ThreadEvent {
                 seq,
                 body: body.clone(),
                 type_: "event".to_owned(),
                 event: "thread".to_owned(),
             })?,
-            Stopped(ref body) => serde_json::to_vec(&StoppedEvent{
+            Stopped(ref body) => serde_json::to_vec(&StoppedEvent {
                 seq,
                 body: body.clone(),
                 type_: "event".to_owned(),
                 event: "stopped".to_owned(),
             })?,
-            Output(ref body) => serde_json::to_vec(&OutputEvent{
+            Output(ref body) => serde_json::to_vec(&OutputEvent {
                 seq,
                 body: body.clone(),
                 type_: "event".to_owned(),
@@ -187,24 +182,24 @@ impl Event {
             })?,
             Terminated(restart_request) => {
                 let body = TerminatedEventBody {
-                    restart: Some(
-                        serde_json::Value::Bool(restart_request == &RestartRequest::Yes)
-                    ),
+                    restart: Some(serde_json::Value::Bool(
+                        restart_request == &RestartRequest::Yes,
+                    )),
                 };
 
-                serde_json::to_vec(&TerminatedEvent{
+                serde_json::to_vec(&TerminatedEvent {
                     seq,
                     body: Some(body),
                     type_: "event".to_owned(),
                     event: "terminated".to_owned(),
                 })?
-            },
-            Breakpoint(ref body) => serde_json::to_vec(&BreakpointEvent{
+            }
+            Breakpoint(ref body) => serde_json::to_vec(&BreakpointEvent {
                 seq,
                 body: body.clone(),
                 type_: "event".to_owned(),
                 event: "breakpoint".to_owned(),
-            })? ,
+            })?,
             _ => return Err(Error::Unimplemented),
         };
 
@@ -212,24 +207,22 @@ impl Event {
     }
 
     pub fn console_output(msg: String) -> Event {
-        Event::Output(
-            OutputEventBody {
-                output: msg,
-                category: Some("console".to_owned()),
-                variables_reference: None,
-                source: None,
-                line: None,
-                column: None,
-                data: None, 
-            }
-        )
+        Event::Output(OutputEventBody {
+            output: msg,
+            category: Some("console".to_owned()),
+            variables_reference: None,
+            source: None,
+            line: None,
+            column: None,
+            data: None,
+        })
     }
 }
 
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub enum RestartRequest {
     Yes,
-    No
+    No,
 }
 
 #[cfg(test)]

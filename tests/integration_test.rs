@@ -1,10 +1,10 @@
-use std::process::{Command, Stdio};
 use assert_cmd::prelude::*;
+use std::process::{Command, Stdio};
 
-use std::io::{ Read, Write };
+use std::io::{Read, Write};
 
-use std::io::BufReader;
 use std::io::BufRead;
+use std::io::BufReader;
 
 use insta::assert_snapshot;
 
@@ -14,15 +14,16 @@ use std::str;
 fn basic_init_flow() -> Result<(), Box<dyn std::error::Error>> {
     let mut cmd = Command::main_binary()?;
 
-    let initialize_request = format!("Content-Length: 315\r\n\r\n{}", 
-        r#"{"command":"initialize","arguments":{"clientID":"vscode","clientName":"Visual Studio Code","adapterID":"probe_rs","pathFormat":"path","linesStartAt1":true,"columnsStartAt1":true,"supportsVariableType":true,"supportsVariablePaging":true,"supportsRunInTerminalRequest":true,"locale":"en-us"},"type":"request","seq":1}"#);
+    let initialize_request = format!(
+        "Content-Length: 315\r\n\r\n{}",
+        r#"{"command":"initialize","arguments":{"clientID":"vscode","clientName":"Visual Studio Code","adapterID":"probe_rs","pathFormat":"path","linesStartAt1":true,"columnsStartAt1":true,"supportsVariableType":true,"supportsVariablePaging":true,"supportsRunInTerminalRequest":true,"locale":"en-us"},"type":"request","seq":1}"#
+    );
 
     let mut spawned = cmd.stdin(Stdio::piped()).stdout(Stdio::piped()).spawn()?;
 
     println!("Spawned...");
 
     {
-
         let mut cmd_in = spawned.stdin.take().unwrap();
         let cmd_out = spawned.stdout.take().unwrap();
 
@@ -48,8 +49,7 @@ fn basic_init_flow() -> Result<(), Box<dyn std::error::Error>> {
 
         let content_len = get_content_len(&header);
 
-
-        let mut resp_body = vec![0u8;content_len];
+        let mut resp_body = vec![0u8; content_len];
 
         reader.read_exact(&mut resp_body)?;
 
@@ -57,7 +57,6 @@ fn basic_init_flow() -> Result<(), Box<dyn std::error::Error>> {
 
         assert_snapshot!(response);
     }
-
 
     spawned.kill()?;
 
