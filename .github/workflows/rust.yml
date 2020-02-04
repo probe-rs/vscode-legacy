@@ -9,7 +9,6 @@ jobs:
     steps:
     - name: Install libusb
       run: sudo apt install -y libusb-dev libusb-1.0
-      if: matrix.os == 'ubuntu-latest'
     - uses: actions/checkout@v1
     - name: Build
       uses: actions-rs/cargo@v1
