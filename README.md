@@ -1,6 +1,6 @@
 # probe-rs-vscode README
 
-Debugger plugin for vscode, based on (probe-rs)[https://github.com/probe-rs/probe-rs].
+Debugger plugin for vscode, based on [probe-rs](https://github.com/probe-rs/probe-rs).
 
 Currently in *early alpha stage*, except for halting and running not a lot is working yet.
 
@@ -23,16 +23,14 @@ open a project you want to debug, and then launch the extension using a configur
 
 ```json
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+
     "version": "0.2.0",
-        {
+    "configurations": [{
             "type": "probe_rs",
             "request": "attach",
             "name": "Example: gpio_hal_blinky, attach to debugger",
             "program": "${workspaceRoot}/target/thumbv6m-none-eabi/debug/examples/gpio_hal_blinky",
-            "cwd" "${workspaceRoot}",
+            "cwd": "${workspaceRoot}",
             "reset": true,
             "halt_after_reset": false,
             "server_mode": true,
