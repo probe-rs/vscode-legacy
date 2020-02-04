@@ -3,12 +3,8 @@ name: Rust Build
 on: [push]
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-
-    runs-on: ${{ matrix.os }}
+  linux-build:
+    runs-on: ubuntu-latest 
 
     steps:
     - name: Install libusb
@@ -16,6 +12,31 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
     - uses: actions/checkout@v1
     - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+      uses: actions-rs/cargo@v1
+      with:
+        command: build
+
+  windows-build:
+    strategy:
+      matrix:
+        target:
+          - windows-msvc
+          - windows-gnu
+
+    runs-on: windows-latest 
+
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v2
+    
+    - name: Install toolchain
+      uses: actions-rs/toolchain@v1
+      with: 
+        toolchain: stable
+        target: ${{ matrix.target }}
+        override: true
+
+    - name: Build
+      uses: actions-rs/cargo@v1
+      with:
+        command: build
