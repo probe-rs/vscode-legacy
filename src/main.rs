@@ -283,7 +283,10 @@ impl Debugger {
                         // Just log this, debugging without debug info should be possible.
                         // Showing a warning to the user would be optimal, but not clear how
                         // this can be done with vs code.
-                        warn!("Unable to read debug information: {}", e);
+                        warn!(
+                            "Unable to read debug information from file '{}': {}",
+                            args.program, e
+                        );
                         None
                     }
                 };
@@ -324,11 +327,7 @@ impl Debugger {
 
                             for bp in self.breakpoints.iter_mut() {
                                 if let Some(location) = bp.address {
-                                    session.target.core.set_breakpoint(
-                                        &mut session.probe,
-                                        0,
-                                        location as u32,
-                                    )?;
+                                    session.set_hw_breakpoint(location as u32)?;
 
                                     bp.verified = true;
 
@@ -416,11 +415,7 @@ impl Debugger {
                             debug!("Found source location: {:#08x}!", location);
 
                             let verified = if let Some(session) = self.session.as_mut() {
-                                session.target.core.set_breakpoint(
-                                    &mut session.probe,
-                                    0,
-                                    location as u32,
-                                )?;
+                                session.set_hw_breakpoint(location as u32)?;
                                 true
                             } else {
                                 false
@@ -603,92 +598,112 @@ impl Debugger {
                     .unwrap();
                 debug!("Stopped at address 0x{:08x}", pc);
 
-                let debug_info = self.debug_info.as_ref().unwrap();
+                if let Some(debug_info) = self.debug_info.as_ref() {
+                    self.current_stackframes = debug_info.try_unwind(session, pc as u64).collect();
 
-                self.current_stackframes = debug_info.try_unwind(session, pc as u64).collect();
+                    let frame_list: Vec<StackFrame> = self
+                        .current_stackframes
+                        .iter()
+                        .map(|f| {
+                            use probe_rs::debug::ColumnType::*;
 
-                let frame_list: Vec<StackFrame> = self
-                    .current_stackframes
-                    .iter()
-                    .map(|f| {
-                        use probe_rs::debug::ColumnType::*;
-
-                        let column = f
-                            .source_location
-                            .as_ref()
-                            .and_then(|sl| {
-                                sl.column.map(|col| match col {
-                                    LeftEdge => 0,
-                                    Column(c) => c,
+                            let column = f
+                                .source_location
+                                .as_ref()
+                                .and_then(|sl| {
+                                    sl.column.map(|col| match col {
+                                        LeftEdge => 0,
+                                        Column(c) => c,
+                                    })
                                 })
-                            })
-                            .unwrap_or(0);
+                                .unwrap_or(0);
 
-                        let sl = f.source_location.as_ref().unwrap();
+                            let sl = f.source_location.as_ref().unwrap();
 
-                        let mut path: PathBuf = sl.directory.as_ref().unwrap().into();
+                            let mut path: PathBuf = sl.directory.as_ref().unwrap().into();
 
-                        path.push(sl.file.as_ref().unwrap());
+                            path.push(sl.file.as_ref().unwrap());
 
-                        let source = Some(Source {
-                            name: Some(sl.file.clone().unwrap()),
-                            path: path.to_str().map(|s| s.to_owned()),
-                            source_reference: None,
-                            presentation_hint: None,
-                            origin: None,
-                            sources: None,
-                            adapter_data: None,
-                            checksums: None,
-                        });
+                            let source = Some(Source {
+                                name: Some(sl.file.clone().unwrap()),
+                                path: path.to_str().map(|s| s.to_owned()),
+                                source_reference: None,
+                                presentation_hint: None,
+                                origin: None,
+                                sources: None,
+                                adapter_data: None,
+                                checksums: None,
+                            });
 
-                        let line = f
-                            .source_location
-                            .as_ref()
-                            .and_then(|sl| sl.line)
-                            .unwrap_or(0) as i64;
+                            let line = f
+                                .source_location
+                                .as_ref()
+                                .and_then(|sl| sl.line)
+                                .unwrap_or(0) as i64;
 
-                        debug!(
-                            "  Frame {: <2} - {}:{}:{}",
-                            f.id,
-                            path.display(),
-                            line,
-                            column
-                        );
+                            debug!(
+                                "  Frame {: <2} - {}:{}:{}",
+                                f.id,
+                                path.display(),
+                                line,
+                                column
+                            );
 
-                        StackFrame {
-                            id: f.id as i64,
-                            name: f.function_name.clone(),
-                            source: source,
-                            line: line,
-                            column: column as i64,
-                            end_column: None,
-                            end_line: None,
-                            module_id: None,
-                            presentation_hint: Some("normal".to_owned()),
-                        }
-                    })
-                    .collect();
+                            StackFrame {
+                                id: f.id as i64,
+                                name: f.function_name.clone(),
+                                source: source,
+                                line: line,
+                                column: column as i64,
+                                end_column: None,
+                                end_line: None,
+                                module_id: None,
+                                presentation_hint: Some("normal".to_owned()),
+                            }
+                        })
+                        .collect();
 
-                let frame_len = frame_list.len();
+                    let frame_len = frame_list.len();
 
-                let body = StackTraceResponseBody {
-                    stack_frames: frame_list,
-                    total_frames: Some(frame_len as i64),
-                };
+                    let body = StackTraceResponseBody {
+                        stack_frames: frame_list,
+                        total_frames: Some(frame_len as i64),
+                    };
 
-                let resp = StackTraceResponse {
-                    command: "stackTrace".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: true,
-                    body,
-                    message: None,
-                    type_: "response".to_owned(),
-                };
+                    let resp = StackTraceResponse {
+                        command: "stackTrace".to_owned(),
+                        request_seq: req.seq,
+                        seq: adapter.peek_seq(),
+                        success: true,
+                        body,
+                        message: None,
+                        type_: "response".to_owned(),
+                    };
 
-                let encoded_resp = serde_json::to_vec(&resp)?;
+                    let encoded_resp = serde_json::to_vec(&resp)?;
 
-                adapter.send_data(&encoded_resp)?;
+                    adapter.send_data(&encoded_resp)?;
+                } else {
+                    // No debug information, so we cannot send stack trace information
+                    let body = StackTraceResponseBody {
+                        stack_frames: vec![],
+                        total_frames: None,
+                    };
+
+                    let resp = StackTraceResponse {
+                        command: "stackTrace".to_owned(),
+                        request_seq: req.seq,
+                        seq: adapter.peek_seq(),
+                        body: body,
+                        success: false,
+                        message: Some("No debug information found".to_owned()),
+                        type_: "response".to_owned(),
+                    };
+
+                    let encoded_resp = serde_json::to_vec(&resp)?;
+
+                    adapter.send_data(&encoded_resp)?;
+                }
             }
             "scopes" => {
                 let args: ScopesArguments = get_arguments(req)?;
