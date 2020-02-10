@@ -15,7 +15,7 @@ log = "0.4.8"
 simplelog = "0.7.1"
 clap = "2.33.0"
 
-probe-rs = { git = "https://github.com/probe-rs/probe-rs", branch = "add-source-breakpoints"}
+probe-rs = { git = "https://github.com/probe-rs/probe-rs" }
 
 
 [dev-dependencies]
