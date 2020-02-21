@@ -11,8 +11,6 @@ use debugserver_types::ThreadEvent;
 use debugserver_types::ThreadEventBody;
 use log::trace;
 
-use probe_rs::probe::DebugProbeError;
-
 use std::io;
 use std::io::{BufRead, BufReader};
 use std::io::{Read, Write};
@@ -25,7 +23,7 @@ use debugserver_types::{InitializedEvent, StoppedEventBody};
 pub enum Error {
     IoError(io::Error),
     SerdeError(serde_json::Error),
-    DebugProbeError(DebugProbeError),
+    ProbeError(probe_rs::Error),
     MissingSession,
     InvalidRequest,
     Unimplemented,
@@ -43,9 +41,9 @@ impl From<serde_json::Error> for Error {
     }
 }
 
-impl From<DebugProbeError> for Error {
-    fn from(e: DebugProbeError) -> Self {
-        Error::DebugProbeError(e)
+impl From<probe_rs::Error> for Error {
+    fn from(e: probe_rs::Error) -> Self {
+        Error::ProbeError(e)
     }
 }
 

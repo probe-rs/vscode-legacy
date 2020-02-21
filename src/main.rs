@@ -2,17 +2,12 @@ mod debug_adapter;
 
 use debug_adapter::{DebugAdapter, Event};
 use debugserver_types::*;
-use probe_rs::probe::{DebugProbe, DebugProbeError};
-
-use probe_rs::probe::daplink;
+use probe_rs::DebugProbeError;
 
 use probe_rs;
-use probe_rs::config::registry::Registry;
-use probe_rs::config::registry::SelectionStrategy;
-use probe_rs::probe::MasterProbe;
 
 use probe_rs::debug::DebugInfo;
-use probe_rs::session::Session;
+use probe_rs::{Core, Probe, Session};
 
 use debugserver_types::LaunchResponse;
 use debugserver_types::Request;
@@ -183,6 +178,7 @@ struct Debugger {
     arguments: AttachRequestArguments,
     program: Option<PathBuf>,
     session: Option<Session>,
+    core: Option<Core>,
     debug_info: Option<DebugInfo>,
     breakpoints: Vec<BreakpointInfo>,
     bp_id: u32,
@@ -296,7 +292,9 @@ impl Debugger {
                 self.arguments = args;
 
                 match session {
-                    Ok(mut s) => {
+                    Ok(s) => {
+                        self.core = Some(s.attach_to_core(0)?);
+
                         self.session = Some(s);
 
                         info!("Attached to probe");
@@ -318,16 +316,11 @@ impl Debugger {
                         adapter.send_data(&encoded_resp)?;
 
                         if self.breakpoints.len() > 0 {
-                            let session = self.session.as_mut().unwrap();
-
-                            session
-                                .target
-                                .core
-                                .enable_breakpoints(&mut session.probe, true)?;
+                            let core = self.core.as_mut().unwrap();
 
                             for bp in self.breakpoints.iter_mut() {
                                 if let Some(location) = bp.address {
-                                    session.set_hw_breakpoint(location as u32)?;
+                                    core.set_hw_breakpoint(location as u32)?;
 
                                     bp.verified = true;
 
@@ -380,13 +373,6 @@ impl Debugger {
 
                 trace!("Arguments: {:?}", args);
 
-                if let Some(session) = self.session.as_mut() {
-                    session
-                        .target
-                        .core
-                        .enable_breakpoints(&mut session.probe, true)?;
-                }
-
                 let mut create_breakpoints = Vec::new();
 
                 let source_path = args.source.path.as_ref().map(Path::new);
@@ -414,8 +400,8 @@ impl Debugger {
                         if let Some(location) = source_location {
                             debug!("Found source location: {:#08x}!", location);
 
-                            let verified = if let Some(session) = self.session.as_mut() {
-                                session.set_hw_breakpoint(location as u32)?;
+                            let verified = if let Some(core) = self.core.as_mut() {
+                                core.set_hw_breakpoint(location as u32)?;
                                 true
                             } else {
                                 false
@@ -493,12 +479,12 @@ impl Debugger {
                 //debug!("Arguments: {:?}", args);
 
                 if self.arguments.reset.unwrap_or(false) {
-                    if let Some(s) = self.session.as_mut() {
+                    if let Some(core) = self.core.as_mut() {
                         debug!("Resetting target");
-                        s.target.core.reset_and_halt(&mut s.probe)?;
+                        core.reset_and_halt()?;
 
                         if !self.arguments.halt_after_reset.unwrap_or(true) {
-                            s.target.core.run(&mut s.probe)?;
+                            core.run()?;
                         }
                     }
                 }
@@ -587,19 +573,15 @@ impl Debugger {
                 let args: StackTraceArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
-                let session = self.session.as_mut().unwrap();
+                let core = self.core.as_mut().unwrap();
 
-                let regs = session.target.core.registers();
+                let regs = core.registers();
 
-                let pc = session
-                    .target
-                    .core
-                    .read_core_reg(&mut session.probe, regs.PC)
-                    .unwrap();
+                let pc = core.read_core_reg(regs.PC).unwrap();
                 debug!("Stopped at address 0x{:08x}", pc);
 
                 if let Some(debug_info) = self.debug_info.as_ref() {
-                    self.current_stackframes = debug_info.try_unwind(session, pc as u64).collect();
+                    self.current_stackframes = debug_info.try_unwind(core, pc as u64).collect();
 
                     let frame_list: Vec<StackFrame> = self
                         .current_stackframes
@@ -871,12 +853,8 @@ impl Debugger {
                 let args: ContinueArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
-                if let Some(ref mut session) = self.session {
-                    session
-                        .target
-                        .core
-                        .run(&mut session.probe)
-                        .expect("Failed to continue running target.");
+                if let Some(ref mut core) = self.core {
+                    core.run().expect("Failed to continue running target.");
                 }
 
                 let resp = ContinueResponse {
@@ -913,12 +891,8 @@ impl Debugger {
 
                 adapter.send_data(&encoded_resp)?;
 
-                if let Some(ref mut session) = self.session {
-                    let _cpu_info = session
-                        .target
-                        .core
-                        .step(&mut session.probe)
-                        .expect("Failed to continue running target.");
+                if let Some(ref mut core) = self.core {
+                    let _cpu_info = core.step().expect("Failed to continue running target.");
 
                     debug!("Stopped, sending pause event");
 
@@ -973,11 +947,11 @@ impl Debugger {
         Ok(HandleResult::Continue)
     }
 
-    fn pause(&mut self) -> Result<bool, DebugProbeError> {
-        match self.session {
-            Some(ref mut s) => {
+    fn pause(&mut self) -> Result<bool, probe_rs::Error> {
+        match self.core {
+            Some(ref mut core) => {
                 debug!("Trying to pause target");
-                let cpi = s.target.core.halt(&mut s.probe)?;
+                let cpi = core.halt()?;
                 debug!("Paused target at pc=0x{:08x}", cpi.pc);
 
                 Ok(true)
@@ -996,21 +970,16 @@ struct AttachRequestArguments {
     halt_after_reset: Option<bool>,
 }
 
-fn connect_to_probe(target: &str) -> Result<Session, DebugProbeError> {
-    let device = daplink::tools::list_daplink_devices()
+fn connect_to_probe(target: &str) -> Result<Session, probe_rs::Error> {
+    let mut probes = Probe::list_all();
+
+    let probe_info = probes
         .pop()
         .ok_or(DebugProbeError::ProbeCouldNotBeCreated)?;
 
-    let mut link = daplink::DAPLink::new_from_probe_info(&device)?;
+    let probe = probe_info.open()?;
 
-    link.attach(Some(probe_rs::probe::WireProtocol::Swd))?;
+    let session = probe.attach(target)?;
 
-    let probe = MasterProbe::from_specific_probe(link);
-
-    let registry = Registry::from_builtin_families();
-    let target = registry
-        .get_target(SelectionStrategy::TargetIdentifier(target.into()))
-        .expect("Failed to select target");
-
-    Ok(Session::new(target, probe))
+    Ok(session)
 }
