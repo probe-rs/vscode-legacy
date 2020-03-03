@@ -366,7 +366,7 @@ dependencies = [
 
 [[package]]
 name = "hidapi"
-version = "1.1.1"
+version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "cc 1.0.50 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -404,6 +404,17 @@ dependencies = [
 name = "itoa"
 version = "0.4.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "jaylink"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "bitflags 1.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "byteorder 1.3.4 (registry+https://github.com/rust-lang/crates.io-index)",
+ "log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rusb 0.5.5 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
 [[package]]
 name = "jep106"
@@ -566,7 +577,7 @@ dependencies = [
 [[package]]
 name = "probe-rs"
 version = "0.5.0"
-source = "git+https://github.com/probe-rs/probe-rs#a6a33629c677b80cd097ae6125aef4bbe0ee0e22"
+source = "git+https://github.com/probe-rs/probe-rs#57a1d18a70f9e84e94c71264bc256c0fe1c2a1ef"
 dependencies = [
  "bitfield 0.13.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "capstone 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -574,8 +585,9 @@ dependencies = [
  "enum-primitive-derive 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "gimli 0.20.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "goblin 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "hidapi 1.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "hidapi 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "ihex 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "jaylink 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "jep106 0.2.4 (registry+https://github.com/rust-lang/crates.io-index)",
  "lazy_static 1.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -609,7 +621,7 @@ dependencies = [
 [[package]]
 name = "probe-rs-t2rust"
 version = "0.5.0"
-source = "git+https://github.com/probe-rs/probe-rs#a6a33629c677b80cd097ae6125aef4bbe0ee0e22"
+source = "git+https://github.com/probe-rs/probe-rs#57a1d18a70f9e84e94c71264bc256c0fe1c2a1ef"
 dependencies = [
  "base64 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "proc-macro2 1.0.8 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1069,11 +1081,12 @@ dependencies = [
 "checksum goblin 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = "3081214398d39e4bd7f2c1975f0488ed04614ffdd976c6fc7a0708278552c0da"
 "checksum goblin 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "0259546d6aed5dd1f4efc3ae663cae62912ceb927c0e96ae1fc8a22ab1516763"
 "checksum hermit-abi 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)" = "eff2656d88f158ce120947499e971d743c05dbcbed62e5bd2f38f1698bbc3772"
-"checksum hidapi 1.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "289d0fb85e9ea18785708d4d735eca4f480b533b005e6f8aa2ffba0207800c75"
+"checksum hidapi 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "1cfd6cd631a5f39abaabad541f0b64bfcb7e55fa5c7de9a1e5d5578cb86dd687"
 "checksum ihex 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "9394ec1fbc3afbdfb357ba267a7fffdc39f6e3d8ba88c0af6d9476e6d3c889d5"
 "checksum indexmap 1.3.2 (registry+https://github.com/rust-lang/crates.io-index)" = "076f042c5b7b98f31d205f1249267e12a6518c1481e9dae9764af19b707d2292"
 "checksum insta 0.13.1 (registry+https://github.com/rust-lang/crates.io-index)" = "8df742abee84dbf27d20869c9adf77b0d8f7ea3eead13c2c9e3998d136a97058"
 "checksum itoa 0.4.5 (registry+https://github.com/rust-lang/crates.io-index)" = "b8b7a7c0c47db5545ed3fef7468ee7bb5b74691498139e4b3f6a20685dc6dd8e"
+"checksum jaylink 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "f7303af61073160fc72f7f56ae5bf39234ea85387441101229224a8d64b2057b"
 "checksum jep106 0.2.4 (registry+https://github.com/rust-lang/crates.io-index)" = "f57cd08ee4fbc8043949150a59e34ea5f2afeb172f875db9607689e48600c653"
 "checksum lazy_static 1.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 "checksum libc 0.2.66 (registry+https://github.com/rust-lang/crates.io-index)" = "d515b1f41455adea1313a4a2ac8a8a477634fbae63cc6100e3aebb207ce61558"
