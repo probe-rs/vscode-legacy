@@ -577,7 +577,7 @@ impl Debugger {
 
                 let regs = core.registers();
 
-                let pc = core.read_core_reg(regs.PC).unwrap();
+                let pc = core.read_core_reg(regs.program_counter()).unwrap();
                 debug!("Stopped at address 0x{:08x}", pc);
 
                 if let Some(debug_info) = self.debug_info.as_ref() {
