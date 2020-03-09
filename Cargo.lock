@@ -571,8 +571,8 @@ dependencies = [
 
 [[package]]
 name = "probe-rs"
-version = "0.5.0"
-source = "git+https://github.com/probe-rs/probe-rs#8beedf697582c8959187e600c1533558b4dfa259"
+version = "0.5.1"
+source = "git+https://github.com/probe-rs/probe-rs#d6cade0e820ca721275224af76168c7b8ce313ba"
 dependencies = [
  "bitfield 0.13.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "capstone 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -607,7 +607,7 @@ dependencies = [
  "insta 0.13.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
  "memmap 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "probe-rs 0.5.0 (git+https://github.com/probe-rs/probe-rs)",
+ "probe-rs 0.5.1 (git+https://github.com/probe-rs/probe-rs)",
  "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_json 1.0.48 (registry+https://github.com/rust-lang/crates.io-index)",
  "simplelog 0.7.4 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -616,7 +616,7 @@ dependencies = [
 [[package]]
 name = "probe-rs-t2rust"
 version = "0.5.0"
-source = "git+https://github.com/probe-rs/probe-rs#8beedf697582c8959187e600c1533558b4dfa259"
+source = "git+https://github.com/probe-rs/probe-rs#d6cade0e820ca721275224af76168c7b8ce313ba"
 dependencies = [
  "base64 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "proc-macro2 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1102,7 +1102,7 @@ dependencies = [
 "checksum predicates 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)" = "347a1b6f0b21e636bc9872fb60b83b8e185f6f5516298b8238699f7f9a531030"
 "checksum predicates-core 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "06075c3a3e92559ff8929e7a280684489ea27fe44805174c3ebd9328dcb37178"
 "checksum predicates-tree 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "8e63c4859013b38a76eca2414c64911fba30def9e3202ac461a2d22831220124"
-"checksum probe-rs 0.5.0 (git+https://github.com/probe-rs/probe-rs)" = "<none>"
+"checksum probe-rs 0.5.1 (git+https://github.com/probe-rs/probe-rs)" = "<none>"
 "checksum probe-rs-t2rust 0.5.0 (git+https://github.com/probe-rs/probe-rs)" = "<none>"
 "checksum proc-macro2 0.4.30 (registry+https://github.com/rust-lang/crates.io-index)" = "cf3d2011ab5c909338f7887f4fc896d35932e29146c12c8d01da6b22a80ba759"
 "checksum proc-macro2 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)" = "6c09721c6781493a2a492a96b5a5bf19b65917fe6728884e7c44dd0c60ca3435"
