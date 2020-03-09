@@ -72,6 +72,11 @@ version = "0.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
+name = "base64"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
 name = "bit-set"
 version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -570,8 +575,8 @@ dependencies = [
 
 [[package]]
 name = "probe-rs"
-version = "0.5.0"
-source = "git+https://github.com/probe-rs/probe-rs#8beedf697582c8959187e600c1533558b4dfa259"
+version = "0.5.1"
+source = "git+https://github.com/probe-rs/probe-rs#fcfae794a39ce5842e3fdebadc6a090c213337ba"
 dependencies = [
  "bitfield 0.13.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "capstone 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -606,7 +611,7 @@ dependencies = [
  "insta 0.15.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
  "memmap 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "probe-rs 0.5.0 (git+https://github.com/probe-rs/probe-rs)",
+ "probe-rs 0.5.1 (git+https://github.com/probe-rs/probe-rs)",
  "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_json 1.0.48 (registry+https://github.com/rust-lang/crates.io-index)",
  "simplelog 0.7.4 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -615,9 +620,9 @@ dependencies = [
 [[package]]
 name = "probe-rs-t2rust"
 version = "0.5.0"
-source = "git+https://github.com/probe-rs/probe-rs#8beedf697582c8959187e600c1533558b4dfa259"
+source = "git+https://github.com/probe-rs/probe-rs#fcfae794a39ce5842e3fdebadc6a090c213337ba"
 dependencies = [
- "base64 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "base64 0.12.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "proc-macro2 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)",
  "quote 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "scroll 0.10.1 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1040,6 +1045,7 @@ dependencies = [
 "checksum atty 0.2.14 (registry+https://github.com/rust-lang/crates.io-index)" = "d9b39be18770d11421cdb1b9947a45dd3f37e93092cbf377614828a319d5fee8"
 "checksum autocfg 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "f8aac770f1885fd7e387acedd76065302551364496e46b3dd00860b2f8359b9d"
 "checksum base64 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "b41b7ea54a0c9d92199de89e20e58d49f02f8e699814ef3fdf266f6f748d15c7"
+"checksum base64 0.12.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7d5ca2cd0adc3f48f9e9ea5a6bbdf9ccc0bfade884847e484d452414c7ccffb3"
 "checksum bit-set 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "e84c238982c4b1e1ee668d136c510c67a13465279c0cb367ea6baf6310620a80"
 "checksum bit-vec 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "f59bbe95d4e52a6398ec21238d31577f2b28a9d86807f06ca59d191d8440d0bb"
 "checksum bitfield 0.13.2 (registry+https://github.com/rust-lang/crates.io-index)" = "46afbd2983a5d5a7bd740ccb198caf5b82f45c40c09c0eed36052d91cb92e719"
@@ -1101,7 +1107,7 @@ dependencies = [
 "checksum predicates 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)" = "347a1b6f0b21e636bc9872fb60b83b8e185f6f5516298b8238699f7f9a531030"
 "checksum predicates-core 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "06075c3a3e92559ff8929e7a280684489ea27fe44805174c3ebd9328dcb37178"
 "checksum predicates-tree 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "8e63c4859013b38a76eca2414c64911fba30def9e3202ac461a2d22831220124"
-"checksum probe-rs 0.5.0 (git+https://github.com/probe-rs/probe-rs)" = "<none>"
+"checksum probe-rs 0.5.1 (git+https://github.com/probe-rs/probe-rs)" = "<none>"
 "checksum probe-rs-t2rust 0.5.0 (git+https://github.com/probe-rs/probe-rs)" = "<none>"
 "checksum proc-macro2 0.4.30 (registry+https://github.com/rust-lang/crates.io-index)" = "cf3d2011ab5c909338f7887f4fc896d35932e29146c12c8d01da6b22a80ba759"
 "checksum proc-macro2 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)" = "6c09721c6781493a2a492a96b5a5bf19b65917fe6728884e7c44dd0c60ca3435"
