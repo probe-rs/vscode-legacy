@@ -20,4 +20,4 @@ probe-rs = { git = "https://github.com/probe-rs/probe-rs" }
 
 [dev-dependencies]
 assert_cmd = "0.10"
-insta = "0.13.1"
+insta = "0.15.0"
