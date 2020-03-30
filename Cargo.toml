@@ -12,7 +12,7 @@ debugserver-types = "0.5.0"
 serde_json = "1.0.48"
 serde = { version = "1.0", features = ["derive"] }
 log = "0.4.8"
-simplelog = "0.7.1"
+simplelog = "0.7.5"
 clap = "2.33.0"
 
 probe-rs = { git = "https://github.com/probe-rs/probe-rs" }
