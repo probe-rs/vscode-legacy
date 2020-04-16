@@ -15,7 +15,7 @@ log = "0.4.8"
 simplelog = "0.7.5"
 clap = "2.33.0"
 
-probe-rs = "0.6.0"
+probe-rs = "0.6.1"
 
 
 [dev-dependencies]
