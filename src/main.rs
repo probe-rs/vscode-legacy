@@ -32,7 +32,12 @@ use simplelog::*;
 
 use clap::{App, Arg};
 
-use std::net::{SocketAddr, TcpListener};
+use anyhow::anyhow;
+
+use std::{
+    net::{SocketAddr, TcpListener},
+    time::Duration,
+};
 
 use serde::de::DeserializeOwned;
 use serde::Deserialize;
@@ -178,7 +183,6 @@ struct Debugger {
     arguments: AttachRequestArguments,
     program: Option<PathBuf>,
     session: Option<Session>,
-    core: Option<Core>,
     debug_info: Option<DebugInfo>,
     breakpoints: Vec<BreakpointInfo>,
     bp_id: u32,
@@ -266,14 +270,19 @@ impl Debugger {
                 let args: AttachRequestArguments = get_arguments(req)?;
                 trace!("Arguments: {:?}", args);
 
-                self.program = Some(args.program.clone().into());
+                let mut program_path = PathBuf::from(args.program.clone());
 
                 if let Some(ref cwd) = args.cwd {
                     debug!("Current working directory: '{}'", cwd);
                     self.location = PathBuf::from(cwd);
+
+                    // If the path to the programm to be debugged is relative, we join if with the
+                    if program_path.is_relative() {
+                        program_path = self.location.clone().join(&program_path);
+                    }
                 }
 
-                self.debug_info = match DebugInfo::from_file(&args.program) {
+                self.debug_info = match DebugInfo::from_file(&program_path) {
                     Ok(di) => Some(di),
                     Err(e) => {
                         // Just log this, debugging without debug info should be possible.
@@ -281,11 +290,14 @@ impl Debugger {
                         // this can be done with vs code.
                         warn!(
                             "Unable to read debug information from file '{}': {}",
-                            args.program, e
+                            program_path.display(),
+                            e
                         );
                         None
                     }
                 };
+
+                self.program = Some(program_path);
 
                 let session = connect_to_probe(&args.chip);
 
@@ -293,8 +305,6 @@ impl Debugger {
 
                 match session {
                     Ok(s) => {
-                        self.core = Some(s.attach_to_core(0)?);
-
                         self.session = Some(s);
 
                         info!("Attached to probe");
@@ -316,7 +326,12 @@ impl Debugger {
                         adapter.send_data(&encoded_resp)?;
 
                         if self.breakpoints.len() > 0 {
-                            let core = self.core.as_mut().unwrap();
+                            let mut core = self
+                                .session
+                                .as_mut()
+                                .unwrap()
+                                .core(0)
+                                .expect("Failed to get core");
 
                             for bp in self.breakpoints.iter_mut() {
                                 if let Some(location) = bp.address {
@@ -400,7 +415,9 @@ impl Debugger {
                         if let Some(location) = source_location {
                             debug!("Found source location: {:#08x}!", location);
 
-                            let verified = if let Some(core) = self.core.as_mut() {
+                            let verified = if let Some(mut core) =
+                                self.session.as_mut().and_then(|s| s.core(0).ok())
+                            {
                                 core.set_hw_breakpoint(location as u32)?;
                                 true
                             } else {
@@ -479,9 +496,9 @@ impl Debugger {
                 //debug!("Arguments: {:?}", args);
 
                 if self.arguments.reset.unwrap_or(false) {
-                    if let Some(core) = self.core.as_mut() {
+                    if let Some(mut core) = self.session.as_mut().and_then(|s| s.core(0).ok()) {
                         debug!("Resetting target");
-                        core.reset_and_halt()?;
+                        core.reset_and_halt(Duration::from_millis(10))?;
 
                         if !self.arguments.halt_after_reset.unwrap_or(true) {
                             core.run()?;
@@ -573,7 +590,7 @@ impl Debugger {
                 let args: StackTraceArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
-                let core = self.core.as_mut().unwrap();
+                let mut core = self.session.as_mut().and_then(|s| s.core(0).ok()).unwrap();
 
                 let regs = core.registers();
 
@@ -581,7 +598,8 @@ impl Debugger {
                 debug!("Stopped at address 0x{:08x}", pc);
 
                 if let Some(debug_info) = self.debug_info.as_ref() {
-                    self.current_stackframes = debug_info.try_unwind(core, pc as u64).collect();
+                    self.current_stackframes =
+                        debug_info.try_unwind(&mut core, pc as u64).collect();
 
                     let frame_list: Vec<StackFrame> = self
                         .current_stackframes
@@ -853,7 +871,7 @@ impl Debugger {
                 let args: ContinueArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
-                if let Some(ref mut core) = self.core {
+                if let Some(ref mut core) = self.session.as_mut().and_then(|s| s.core(0).ok()) {
                     core.run().expect("Failed to continue running target.");
                 }
 
@@ -891,7 +909,7 @@ impl Debugger {
 
                 adapter.send_data(&encoded_resp)?;
 
-                if let Some(ref mut core) = self.core {
+                if let Some(ref mut core) = self.session.as_mut().and_then(|s| s.core(0).ok()) {
                     let _cpu_info = core.step().expect("Failed to continue running target.");
 
                     debug!("Stopped, sending pause event");
@@ -948,10 +966,10 @@ impl Debugger {
     }
 
     fn pause(&mut self) -> Result<bool, probe_rs::Error> {
-        match self.core {
+        match self.session.as_mut().and_then(|s| s.core(0).ok()) {
             Some(ref mut core) => {
                 debug!("Trying to pause target");
-                let cpi = core.halt()?;
+                let cpi = core.halt(Duration::from_millis(10))?;
                 debug!("Paused target at pc=0x{:08x}", cpi.pc);
 
                 Ok(true)
@@ -970,12 +988,10 @@ struct AttachRequestArguments {
     halt_after_reset: Option<bool>,
 }
 
-fn connect_to_probe(target: &str) -> Result<Session, probe_rs::Error> {
+fn connect_to_probe(target: &str) -> Result<Session, anyhow::Error> {
     let mut probes = Probe::list_all();
 
-    let probe_info = probes
-        .pop()
-        .ok_or(DebugProbeError::ProbeCouldNotBeCreated)?;
+    let probe_info = probes.pop().ok_or(anyhow!("Failed to find probe"))?;
 
     let probe = probe_info.open()?;
 
