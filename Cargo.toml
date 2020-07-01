@@ -20,4 +20,4 @@ probe-rs = "0.6.2"
 
 [dev-dependencies]
 assert_cmd = "0.10"
-insta = "0.16.0"
+insta = "0.16.1"
