@@ -19,32 +19,23 @@ use std::str;
 
 use debugserver_types::{InitializedEvent, StoppedEventBody};
 
-#[derive(Debug)]
+use anyhow::{anyhow, Result};
+use thiserror;
+
+#[derive(Debug, thiserror::Error)]
 pub enum Error {
-    IoError(io::Error),
-    SerdeError(serde_json::Error),
-    ProbeError(probe_rs::Error),
+    #[error("Input error")]
+    IoError(#[from] io::Error),
+    #[error("Serialiation error")]
+    SerdeError(#[from] serde_json::Error),
+    #[error("Error in interaction with probe")]
+    ProbeError(#[from] probe_rs::Error),
+    #[error("Missing session for interaction with probe")]
     MissingSession,
+    #[error("Received an invalid requeset")]
     InvalidRequest,
+    #[error("Request not implemented")]
     Unimplemented,
-}
-
-impl From<io::Error> for Error {
-    fn from(e: io::Error) -> Self {
-        Error::IoError(e)
-    }
-}
-
-impl From<serde_json::Error> for Error {
-    fn from(e: serde_json::Error) -> Self {
-        Error::SerdeError(e)
-    }
-}
-
-impl From<probe_rs::Error> for Error {
-    fn from(e: probe_rs::Error) -> Self {
-        Error::ProbeError(e)
-    }
 }
 
 pub struct DebugAdapter<R: Read, W: Write> {
@@ -66,7 +57,7 @@ impl<R: Read, W: Write> DebugAdapter<R, W> {
         self.seq
     }
 
-    pub fn receive_data(&mut self) -> Result<Vec<u8>, Error> {
+    pub fn receive_data(&mut self) -> Result<Vec<u8>> {
         let mut header = String::new();
 
         self.input.read_line(&mut header)?;
@@ -76,7 +67,8 @@ impl<R: Read, W: Write> DebugAdapter<R, W> {
         let mut buff = String::new();
         self.input.read_line(&mut buff)?;
 
-        let len = get_content_len(&header).unwrap();
+        let len = get_content_len(&header)
+            .ok_or_else(|| anyhow!("Failed to read content length from header '{}'", header))?;
 
         let mut content = vec![0u8; len];
         let bytes_read = self.input.read(&mut content)?;
