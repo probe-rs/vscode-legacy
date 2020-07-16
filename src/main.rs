@@ -1,9 +1,9 @@
 mod debug_adapter;
 mod debugger;
 
-use debug_adapter::{DebugAdapter, Event};
+use debug_adapter::{DebugAdapter, DebugAdapterMessage, Event};
 
-use debugserver_types::{InitializeRequestArguments, Request};
+use debugserver_types::InitializeRequestArguments;
 
 use std::{
     env,
@@ -14,9 +14,7 @@ use std::{
     path::PathBuf,
 };
 
-use debugserver_types::{Capabilities, InitializeResponse};
-use serde_json;
-
+use debugserver_types::Capabilities;
 use log::{debug, error, info, trace};
 
 use simplelog::*;
@@ -91,7 +89,11 @@ fn run<R: Read, W: Write>(
     cwd: &PathBuf,
 ) -> Result<(), anyhow::Error> {
     let data = adapter.receive_data()?;
-    let request: Request = serde_json::from_slice(&data)?;
+
+    let request = match data {
+        DebugAdapterMessage::Request(request) => request,
+        _ => return Err(anyhow!("Expected request as initial message")),
+    };
 
     if request.command != "initialize" {
         return Err(anyhow!(
@@ -113,22 +115,7 @@ fn run<R: Read, W: Write>(
         ..Default::default()
     };
 
-    let init_resp = InitializeResponse {
-        seq: request.seq + 1,
-        type_: "response".to_owned(),
-
-        request_seq: request.seq,
-        command: "initialize".to_owned(),
-
-        success: true,
-        message: None,
-
-        body: Some(capabilities),
-    };
-
-    let response_body = serde_json::to_vec(&init_resp)?;
-
-    adapter.send_data(&response_body)?;
+    adapter.send_response(&request, Ok(Some(capabilities)))?;
 
     adapter.send_event(&Event::Initialized)?;
 
@@ -136,13 +123,10 @@ fn run<R: Read, W: Write>(
 
     // look for other request
     loop {
-        let content = adapter.receive_data()?;
-        trace!("< {:?}", content);
+        let message = adapter.receive_data()?;
+        trace!("< {:?}", message);
 
-        let req: Request = serde_json::from_slice(&content)?;
-        trace!("< {:?}", req);
-
-        match dbg.handle(&mut adapter, &req) {
+        match dbg.handle(&mut adapter, &message) {
             Ok(r) => match r {
                 HandleResult::Continue => (),
                 HandleResult::Stop => {

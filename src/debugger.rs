@@ -11,7 +11,7 @@ use log::{debug, error, info, trace, warn};
 
 use debugserver_types::*;
 
-use debug_adapter::Event;
+use debug_adapter::{DebugAdapterMessage, Event};
 use serde::{de::DeserializeOwned, Deserialize};
 
 #[derive(Default)]
@@ -49,7 +49,21 @@ impl Debugger {
     pub fn handle<R: Read, W: Write>(
         &mut self,
         adapter: &mut DebugAdapter<R, W>,
+        req: &DebugAdapterMessage,
+    ) -> Result<HandleResult, crate::debug_adapter::Error> {
+        match req {
+            DebugAdapterMessage::Request(req) => self.handle_request(req, adapter),
+            other => {
+                log::warn!("Unexpected message: {:?}", other);
+                Ok(HandleResult::Continue)
+            }
+        }
+    }
+
+    fn handle_request<R: Read, W: Write>(
+        &mut self,
         req: &Request,
+        adapter: &mut DebugAdapter<R, W>,
     ) -> Result<HandleResult, crate::debug_adapter::Error> {
         debug!("Handling request {}", req.command);
 
@@ -58,22 +72,7 @@ impl Debugger {
                 let args: LaunchRequestArguments = get_arguments(req)?;
                 trace!("Arguments: {:?}", args);
 
-                // currently, launch is not supported
-
-                let resp = LaunchResponse {
-                    command: "launch".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: false,
-                    body: None,
-                    type_: "response".to_owned(),
-
-                    message: Some("Launching a program is not yet supported.".to_owned()),
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response::<()>(req, Err(debug_adapter::Error::Unimplemented))?;
             }
             "attach" => {
                 let args: AttachRequestArguments = get_arguments(req)?;
@@ -120,19 +119,7 @@ impl Debugger {
 
                         adapter.log_to_console("Attached to probe")?;
 
-                        let resp = AttachResponse {
-                            command: "attach".to_owned(),
-                            request_seq: req.seq,
-                            seq: adapter.peek_seq(),
-                            success: true,
-                            type_: "response".to_owned(),
-                            body: None,
-                            message: None,
-                        };
-
-                        let encoded_resp = serde_json::to_vec(&resp)?;
-
-                        adapter.send_data(&encoded_resp)?;
+                        adapter.send_response::<()>(&req, Ok(None))?;
 
                         if self.breakpoints.len() > 0 {
                             let mut core = self
@@ -156,19 +143,7 @@ impl Debugger {
                     Err(e) => {
                         warn!("Failed to attacht to probe: {:?}", e);
 
-                        let resp = AttachResponse {
-                            command: "attach".to_owned(),
-                            request_seq: req.seq,
-                            seq: adapter.peek_seq(),
-                            success: false,
-                            type_: "response".to_owned(),
-                            body: None,
-                            message: Some("Failed to attach to probe.".to_owned()),
-                        };
-
-                        let encoded_resp = serde_json::to_vec(&resp)?;
-
-                        adapter.send_data(&encoded_resp)?;
+                        adapter.send_response::<()>(&req, Err(e.into()))?;
                     }
                 }
             }
@@ -176,19 +151,7 @@ impl Debugger {
                 let args: DisconnectArguments = get_arguments(req)?;
                 trace!("Arguments: {:?}", args);
 
-                let resp = DisconnectResponse {
-                    command: "disconnect".to_owned(),
-                    request_seq: req.seq,
-                    success: true,
-                    body: None,
-                    seq: adapter.peek_seq(),
-                    message: None,
-                    type_: "response".to_owned(),
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response::<()>(&req, Ok(None))?;
 
                 return Ok(HandleResult::Stop);
             }
@@ -268,37 +231,13 @@ impl Debugger {
                     breakpoints: create_breakpoints,
                 };
 
-                let resp = SetBreakpointsResponse {
-                    command: "setBreakpoints".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: true,
-                    type_: "response".to_owned(),
-                    body: breakpoint_body,
-                    message: None,
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response(&req, Ok(Some(breakpoint_body)))?;
             }
             "setExceptionBreakpoints" => {
                 let args: SetExceptionBreakpointsArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
-                let resp = SetExceptionBreakpointsResponse {
-                    command: "setExceptionBreakpoints".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: true,
-                    type_: "response".to_owned(),
-                    body: None,
-                    message: None,
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response::<()>(&req, Ok(None))?;
             }
             "configurationDone" => {
                 //let args: ConfigurationDoneArguments = get_arguments(req)?;
@@ -315,20 +254,7 @@ impl Debugger {
                     }
                 }
 
-                let resp = ConfigurationDoneResponse {
-                    command: "configurationDone".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: true,
-                    body: None,
-                    type_: "response".to_owned(),
-
-                    message: None,
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response::<()>(&req, Ok(None))?;
             }
             "threads" => {
                 //let args: ThreadsArguments = serde_json::from_value(req.arguments.as_ref().unwrap().clone()).unwrap();
@@ -341,38 +267,13 @@ impl Debugger {
 
                 let threads = vec![single_thread];
 
-                let resp = ThreadsResponse {
-                    command: "threads".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: true,
-                    body: ThreadsResponseBody { threads },
-                    type_: "response".to_owned(),
-
-                    message: None,
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response(&req, Ok(Some(ThreadsResponseBody { threads })))?;
             }
             "pause" => {
                 let args: PauseArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
-                let resp = PauseResponse {
-                    command: "pause".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: true,
-                    body: None,
-                    message: None,
-                    type_: "response".to_owned(),
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response::<()>(&req, Ok(None))?;
 
                 match self.pause() {
                     Ok(_) => {
@@ -479,39 +380,13 @@ impl Debugger {
                         total_frames: Some(frame_len as i64),
                     };
 
-                    let resp = StackTraceResponse {
-                        command: "stackTrace".to_owned(),
-                        request_seq: req.seq,
-                        seq: adapter.peek_seq(),
-                        success: true,
-                        body,
-                        message: None,
-                        type_: "response".to_owned(),
-                    };
-
-                    let encoded_resp = serde_json::to_vec(&resp)?;
-
-                    adapter.send_data(&encoded_resp)?;
+                    adapter.send_response(&req, Ok(Some(body)))?;
                 } else {
                     // No debug information, so we cannot send stack trace information
-                    let body = StackTraceResponseBody {
-                        stack_frames: vec![],
-                        total_frames: None,
-                    };
-
-                    let resp = StackTraceResponse {
-                        command: "stackTrace".to_owned(),
-                        request_seq: req.seq,
-                        seq: adapter.peek_seq(),
-                        body: body,
-                        success: false,
-                        message: Some("No debug information found".to_owned()),
-                        type_: "response".to_owned(),
-                    };
-
-                    let encoded_resp = serde_json::to_vec(&resp)?;
-
-                    adapter.send_data(&encoded_resp)?;
+                    adapter.send_response::<()>(
+                        &req,
+                        Err(anyhow!("No debug information found!").into()),
+                    )?;
                 }
             }
             "scopes" => {
@@ -565,25 +440,13 @@ impl Debugger {
                     scopes.push(scope);
                 }
 
-                let resp = ScopesResponse {
-                    command: "scopes".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: true,
-                    body: ScopesResponseBody { scopes },
-                    type_: "response".to_owned(),
-                    message: None,
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response(&req, Ok(Some(ScopesResponseBody { scopes })))?;
             }
             "source" => {
                 let args: SourceArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
-                let resp = if let Some(path) = args.source.and_then(|s| s.path) {
+                let result = if let Some(path) = args.source.and_then(|s| s.path) {
                     let mut source_path = PathBuf::from(path);
 
                     if source_path.is_relative() {
@@ -591,48 +454,24 @@ impl Debugger {
                     }
 
                     match std::fs::read_to_string(source_path) {
-                        Ok(content) => SourceResponse {
-                            type_: "response".to_owned(),
-                            command: "source".to_owned(),
-                            request_seq: req.seq,
-                            seq: adapter.peek_seq(),
-                            message: None,
-                            success: true,
-                            body: SourceResponseBody {
-                                content,
-                                mime_type: None,
-                            },
-                        },
-                        Err(e) => SourceResponse {
-                            type_: "response".to_owned(),
-                            command: "source".to_owned(),
-                            request_seq: req.seq,
-                            seq: adapter.peek_seq(),
-                            message: None,
-                            success: false,
-                            body: SourceResponseBody {
-                                content: format!("Unable to open resource: {}", e),
-                                mime_type: None,
-                            },
-                        },
+                        Ok(content) => Ok(Some(SourceResponseBody {
+                            content,
+                            mime_type: None,
+                        })),
+
+                        Err(e) => Err(
+                            /*
+                            content: format!("Unable to open resource: {}", e),
+                            mime_type: None,
+                            */
+                            anyhow!("Unable to open resource {}", e).into(),
+                        ),
                     }
                 } else {
-                    SourceResponse {
-                        type_: "response".to_owned(),
-                        command: "source".to_owned(),
-                        request_seq: req.seq,
-                        seq: adapter.peek_seq(),
-                        message: None,
-                        success: false,
-                        body: SourceResponseBody {
-                            content: "Unable to open resource".to_owned(),
-                            mime_type: None,
-                        },
-                    }
+                    Err(anyhow!("Unable to open resource").into())
                 };
 
-                let encoded_resp = serde_json::to_vec(&resp)?;
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response(&req, result)?;
             }
             "variables" => {
                 let args: VariablesArguments = get_arguments(req)?;
@@ -662,19 +501,7 @@ impl Debugger {
                     debug!("{:?}", &variables);
                 }
 
-                let resp = VariablesResponse {
-                    command: "variables".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: true,
-                    body: VariablesResponseBody { variables },
-                    type_: "response".to_owned(),
-                    message: None,
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response(&req, Ok(Some(VariablesResponseBody { variables })))?;
             }
             "continue" => {
                 let args: ContinueArguments = get_arguments(req)?;
@@ -684,39 +511,18 @@ impl Debugger {
                     core.run().expect("Failed to continue running target.");
                 }
 
-                let resp = ContinueResponse {
-                    command: "continue".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: true,
-                    body: ContinueResponseBody {
+                adapter.send_response(
+                    &req,
+                    Ok(Some(ContinueResponseBody {
                         all_threads_continued: Some(true),
-                    },
-                    type_: "response".to_owned(),
-                    message: None,
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                    })),
+                )?;
             }
             "next" => {
                 let args: NextArguments = get_arguments(req)?;
                 debug!("Arguments: {:?}", args);
 
-                let resp = NextResponse {
-                    command: "next".to_owned(),
-                    request_seq: req.seq,
-                    seq: adapter.peek_seq(),
-                    success: true,
-                    body: None,
-                    type_: "response".to_owned(),
-                    message: None,
-                };
-
-                let encoded_resp = serde_json::to_vec(&resp)?;
-
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response::<()>(&req, Ok(None))?;
 
                 if let Some(ref mut core) = self.session.as_mut().and_then(|s| s.core(0).ok()) {
                     let _cpu_info = core.step().expect("Failed to continue running target.");
@@ -742,6 +548,8 @@ impl Debugger {
                     cmd
                 );
 
+                /*
+
                 let resp = ErrorResponse {
                     command: cmd.to_owned(),
                     success: false,
@@ -763,9 +571,9 @@ impl Debugger {
                     message: Some("cancelled".to_owned()),
                 };
 
-                let encoded_resp = serde_json::to_vec(&resp)?;
+                */
 
-                adapter.send_data(&encoded_resp)?;
+                adapter.send_response::<()>(&req, Err(debug_adapter::Error::Unimplemented))?;
 
                 adapter.log_to_console(format!("Received unsupported request '{}'\n", cmd))?;
             }

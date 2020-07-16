@@ -4,6 +4,9 @@ use debugserver_types::OutputEvent;
 use debugserver_types::OutputEventBody;
 use debugserver_types::ProcessEvent;
 use debugserver_types::ProcessEventBody;
+use debugserver_types::ProtocolMessage;
+use debugserver_types::Request;
+use debugserver_types::Response;
 use debugserver_types::StoppedEvent;
 use debugserver_types::TerminatedEvent;
 use debugserver_types::TerminatedEventBody;
@@ -16,10 +19,12 @@ use std::io::{BufRead, BufReader};
 use std::io::{Read, Write};
 
 use std::str;
+use std::string::ToString;
 
 use debugserver_types::{InitializedEvent, StoppedEventBody};
 
 use anyhow::{anyhow, Result};
+use serde::Serialize;
 use thiserror;
 
 #[derive(Debug, thiserror::Error)]
@@ -36,12 +41,21 @@ pub enum Error {
     InvalidRequest,
     #[error("Request not implemented")]
     Unimplemented,
+    #[error(transparent)]
+    Other(#[from] anyhow::Error),
 }
 
 pub struct DebugAdapter<R: Read, W: Write> {
     seq: i64,
     input: BufReader<R>,
     output: W,
+}
+
+#[derive(Debug)]
+pub enum DebugAdapterMessage {
+    Request(Request),
+    Response(Response),
+    Event(debugserver_types::Event),
 }
 
 impl<R: Read, W: Write> DebugAdapter<R, W> {
@@ -57,7 +71,7 @@ impl<R: Read, W: Write> DebugAdapter<R, W> {
         self.seq
     }
 
-    pub fn receive_data(&mut self) -> Result<Vec<u8>> {
+    pub fn receive_data(&mut self) -> Result<DebugAdapterMessage> {
         let mut header = String::new();
 
         self.input.read_line(&mut header)?;
@@ -75,10 +89,59 @@ impl<R: Read, W: Write> DebugAdapter<R, W> {
 
         assert!(bytes_read == len);
 
-        Ok(content)
+        // Extract protocol message
+        let protocol_message: ProtocolMessage = serde_json::from_slice(&content)?;
+
+        match protocol_message.type_.as_ref() {
+            "request" => Ok(DebugAdapterMessage::Request(serde_json::from_slice(
+                &content,
+            )?)),
+            "response" => Ok(DebugAdapterMessage::Response(serde_json::from_slice(
+                &content,
+            )?)),
+            "event" => Ok(DebugAdapterMessage::Event(serde_json::from_slice(
+                &content,
+            )?)),
+            other => Err(anyhow!("Unknown message type: {}", other)),
+        }
     }
 
-    pub fn send_data(&mut self, raw_data: &[u8]) -> Result<(), Error> {
+    pub fn send_response<S: Serialize>(
+        &mut self,
+        request: &Request,
+        response: Result<Option<S>, Error>,
+    ) -> Result<(), Error> {
+        let mut resp = Response {
+            command: request.command.clone(),
+            request_seq: request.seq,
+            seq: self.peek_seq(),
+            success: false,
+            body: None,
+            type_: "response".to_owned(),
+            message: None,
+        };
+
+        match response {
+            Ok(value) => {
+                let body_value = match value {
+                    Some(value) => Some(serde_json::to_value(value)?),
+                    None => None,
+                };
+                resp.success = true;
+                resp.body = body_value;
+            }
+            Err(e) => {
+                resp.success = false;
+                resp.message = Some(e.to_string());
+            }
+        };
+
+        let encoded_resp = serde_json::to_vec(&resp)?;
+
+        self.send_data(&encoded_resp)
+    }
+
+    fn send_data(&mut self, raw_data: &[u8]) -> Result<(), Error> {
         let response_body = raw_data;
 
         let response_header = format!("Content-Length: {}\r\n\r\n", response_body.len());
