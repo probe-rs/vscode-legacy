@@ -16,7 +16,7 @@ simplelog = "0.8.0"
 clap = "2.33.1"
 
 probe-rs = "0.8.0"
-anyhow = "1.0.31"
+anyhow = "1.0.32"
 thiserror = "1.0.20"
 
 
