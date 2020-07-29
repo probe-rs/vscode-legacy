@@ -13,7 +13,8 @@ async function main() {
 		const extensionTestsPath = path.resolve(__dirname, './suite/index');
 
 		// Download VS Code, unzip it and run the integration test
-		await runTests({ extensionDevelopmentPath, extensionTestsPath });
+		// We set --disable-extensions to avoid conflicts with locally installed extensions.
+		await runTests({ extensionDevelopmentPath, extensionTestsPath, launchArgs: ['--disable-extensions'] });
 	} catch (err) {
 		console.error('Failed to run tests');
 		process.exit(1);
