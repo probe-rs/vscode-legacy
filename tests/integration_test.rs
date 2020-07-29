@@ -12,7 +12,7 @@ use std::str;
 
 #[test]
 fn basic_init_flow() -> Result<(), Box<dyn std::error::Error>> {
-    let mut cmd = Command::main_binary()?;
+    let mut cmd = Command::cargo_bin("probe-rs-debugadapter")?;
 
     let initialize_request = format!(
         "Content-Length: 315\r\n\r\n{}",
