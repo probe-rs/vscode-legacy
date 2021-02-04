@@ -56,10 +56,10 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-8.0.3.tgz#51b21b6acb6d1b923bbdc7725c38f9f455166402"
   integrity sha512-vyxR57nv8NfcU0GZu8EUXZLTbCMupIUwy95LJ6lllN+JRPG25CwMHoB1q5xKh8YKhQnHYRAn4yW2yuHbf/5xgg==
 
-"@types/node@*", "@types/node@^14.6.2":
-  version "14.6.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.6.2.tgz#264b44c5a28dfa80198fc2f7b6d3c8a054b9491f"
-  integrity sha512-onlIwbaeqvZyniGPfdw/TEhKIh79pz66L1q06WUQqJLnAb6wbjvOtepLYTGHTqzdXgBYIE3ZdmqHDGsRsbBz7A==
+"@types/node@*", "@types/node@^14.14.24":
+  version "14.14.24"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.24.tgz#541c00e4f7c41c8f108bd5b045248b5224c62946"
+  integrity sha512-6BAlkS4seVjszhrwN0W1WabqWwuJwcYF36Z1rPPyQm80LGRKsIeUPdzI51TezXenjetFNy1gRTpuDn1NBg33LA==
 
 "@types/vscode@^1.48.0":
   version "1.48.0"
