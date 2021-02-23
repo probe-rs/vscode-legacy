@@ -12,7 +12,9 @@ jobs:
 
     steps:
       - name: Install libusb and libftdi
-        run: sudo apt install -y libusb-dev libusb-1.0 libftdi1-dev
+        run: |
+          sudo apt update
+          sudo apt install -y libusb-1.0-0-dev libftdi1-dev
         if: matrix.os == 'ubuntu-latest'
 
       - name: Install libftdi (windows)
