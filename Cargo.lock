@@ -310,16 +310,16 @@ dependencies = [
 
 [[package]]
 name = "insta"
-version = "1.5.1"
+version = "1.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ee5488a5eb23cf41b168051a8114f91e830f6613551f0fdbf71b41a986f8a33d"
+checksum = "c4a1b21a2971cea49ca4613c0e9fe8225ecaf5de64090fddc6002284726e9244"
 dependencies = [
  "console",
- "difference",
  "lazy_static",
  "serde",
  "serde_json",
  "serde_yaml",
+ "similar",
  "uuid",
 ]
 
@@ -741,6 +741,12 @@ dependencies = [
  "serde",
  "yaml-rust",
 ]
+
+[[package]]
+name = "similar"
+version = "1.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1ad1d488a557b235fc46dae55512ffbfc429d2482b08b4d9435ab07384ca8aec"
 
 [[package]]
 name = "simplelog"
